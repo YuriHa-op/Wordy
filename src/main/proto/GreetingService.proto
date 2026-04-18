@@ -3,15 +3,68 @@ syntax = "proto3";
 package hello;
 //option java_multiple_files = true;
 
-service GreetingService {
- rpc sayHello(HelloRequest) returns (HelloResponse);
+service GreetingService { //Draft
+ //Authenti
+ rpc Login(LoginRequest) returns (LoginResponse);
+ rpc Logout(LogoutRequest) returns (Empty);
+
+ // Player Game Actions
+ rpc JoinMatchmaking(PlayerRequest) returns (MatchStatus);
+ rpc PollMatchStatus(PlayerRequest) returns (MatchStatus); //"Polling"
+ rpc GetLetters(MatchRequest) returns (LetterList);
+ rpc SubmitWord(WordSubmission) returns (ValidationResponse);
+ rpc GetRoundResult(MatchRequest) returns (RoundResult);
+
+ // Leaderboard
+ rpc GetTopPlayers(Empty) returns (LeaderboardResponse);
+ rpc GetLongWords(Empty) returns (LongWordsResponse);
+
+ // Admin Actions
+ rpc UpdateGameConfig(ConfigSettings) returns (Empty);
+ rpc SearchPlayer(SearchQuery) returns (PlayerList);
+ // Create
+ // Deleted
+ //
+
+// alternative draft || Alternative draft
+ // for separation concern and split into two servcces
+ // PLAYER SERVICE
+    service PlayerService {
+ rpc Login(LoginRequest) returns (LoginResponse);
+ rpc StartGame(JoinRequest) returns (MatchData);
+ rpc SubmitWord(WordRequest) returns (ValidationResponse);
+ rpc GetLeaderboard(Empty) returns (LeaderboardResponse);
+     }
+
+ // ADMIN SERVICE
+     service AdminService {
+ rpc SearchPlayers(SearchQuery) returns (PlayerList);
+ rpc UpdatePlayer(Player) returns (StatusResponse);
+     rpc DeletePlayer(PlayerId) returns (StatusResponse); // CRUD
+     rpc UpdateSettings(GameSettings) returns (StatusResponse);
+     }
 }
 
-message HelloRequest {
- string name = 1;
+//  MESSAGES umpocoloc
+message Player {
+ string id = 1;
+ string username = 2;
+ int32 total_wins = 3;
 }
 
-message HelloResponse {
- string greeting = 1;
+message GameSettings {
+ int32 waiting_time = 1;
+ int32 round_duration = 2;
+}
+
+message LetterList {
+ string letters = 1; // 20 letters
+ int32 roundNumber = 2;
+}
+
+message MatchStatus {
+ bool isStarted = 1;
+ string matchId = 2;
+ string opponentName = 3;
 }
 

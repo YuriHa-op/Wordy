@@ -1,12 +1,5 @@
 # WORDY: gRPC Multiplayer Word Game
-**Group 4 - Project Documentation**
 
-## 👥 Team Members
-* **ALLINAS, KURT BASTY CAYABYAB**
-* **CALIBUSO, KOBI DE JESUS**
-* **DACASIN, NATH AMIEL SURDAO**
-* **DIMSON, RODNEY BALADAD**
-* **PAGANAJE, CRANE HART GANDALERA**
 
 ---
 

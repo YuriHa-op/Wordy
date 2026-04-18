@@ -1,0 +1,97 @@
+package client.admin.view;
+
+import client.ui.MinecraftColors;
+import client.ui.MinecraftFonts;
+import client.ui.components.MinecraftButton;
+import client.ui.components.MinecraftLabel;
+import client.ui.components.MinecraftPasswordField;
+import client.ui.components.MinecraftPanel;
+import client.ui.components.MinecraftTextField;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
+public class AdminLoginView extends JFrame {
+
+    private final JTextField usernameField = new MinecraftTextField(20);
+    private final JPasswordField passwordField = new MinecraftPasswordField(20);
+    private final JButton loginButton = new MinecraftButton("ENTER CONSOLE");
+    private final JLabel messageLabel = new JLabel(" ");
+
+    public AdminLoginView() {
+        setTitle("Wordy - Admin Login");
+        setSize(880, 620);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        MinecraftPanel background = new MinecraftPanel("/textures/planks.png", 90);
+        background.setLayout(new GridBagLayout());
+
+        JPanel card = new JPanel(new GridBagLayout());
+        card.setOpaque(true);
+        card.setBackground(new Color(80, 0, 0, 140));
+        card.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.BLACK, 3),
+                BorderFactory.createEmptyBorder(20, 24, 20, 24)
+        ));
+        card.setPreferredSize(new Dimension(520, 360));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1;
+
+        MinecraftLabel title = new MinecraftLabel("ADMIN CONSOLE", MinecraftFonts.LARGE, MinecraftColors.TEXT_RED);
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        card.add(title, gbc);
+
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        card.add(new MinecraftLabel("Username", MinecraftFonts.REGULAR, MinecraftColors.TEXT_WHITE), gbc);
+        gbc.gridx = 1;
+        card.add(usernameField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        card.add(new MinecraftLabel("Password", MinecraftFonts.REGULAR, MinecraftColors.TEXT_WHITE), gbc);
+        gbc.gridx = 1;
+        card.add(passwordField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 2;
+        card.add(loginButton, gbc);
+
+        messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        messageLabel.setFont(MinecraftFonts.SMALL);
+        messageLabel.setForeground(MinecraftColors.TEXT_RED);
+        gbc.gridy = 4;
+        card.add(messageLabel, gbc);
+
+        background.add(card);
+        setContentPane(background);
+
+        getRootPane().setDefaultButton(loginButton);
+    }
+
+
+    public JTextField getUsernameField() { return usernameField; }
+    public JPasswordField getPasswordField() { return passwordField; }
+    public JButton getLoginButton() { return loginButton; }
+    public JLabel getMessageLabel() { return messageLabel; }
+}
+

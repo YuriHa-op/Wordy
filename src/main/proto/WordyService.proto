@@ -1,0 +1,207 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.wordy.grpc";
+option java_outer_classname = "WordyProto";
+
+// ============================================
+// Messages
+// ============================================
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  bool success = 1;
+  string message = 2;
+  string session_token = 3;
+}
+
+message LogoutRequest {
+  string session_token = 1;
+}
+
+message LogoutResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message JoinGameRequest {
+  string session_token = 1;
+}
+
+message JoinGameResponse {
+  bool success = 1;
+  string message = 2;
+  string status = 3;      // e.g., "WAITING" or "MATCHED"
+  int32 game_id = 4;
+}
+
+message GameStateRequest {
+  string session_token = 1;
+  int32 game_id = 2;
+}
+
+message GameStateResponse {
+  bool success = 1;
+  string message = 2;
+  string status = 3;            // "WAITING", "ROUND_ACTIVE", "ROUND_OVER", "GAME_OVER"
+  repeated string letters = 4;
+  int32 time_remaining = 5;
+  repeated PlayerScore players = 6;
+  string round_winner = 7;
+  string game_winner = 8;
+  int32 round_number = 9;
+}
+
+message PlayerScore {
+  string username = 1;
+  int32 round_wins = 2;
+  bool submitted_this_round = 3;
+}
+
+message SubmitWordRequest {
+  string session_token = 1;
+  int32 game_id = 2;
+  string word = 3;
+  int32 round_number = 4;
+}
+
+message SubmitWordResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetLeaderboardRequest {}
+
+message GetLeaderboardResponse {
+  repeated LeaderboardPlayer top_players = 1;
+  repeated LeaderboardWord longest_words = 2;
+}
+
+message LeaderboardPlayer {
+  string username = 1;
+  int32 total_wins = 2;
+}
+
+message LeaderboardWord {
+  string username = 1;
+  string word = 2;
+  int32 word_length = 3;
+}
+
+// ---------------- Admin Messages ----------------
+
+message CreatePlayerRequest {
+  string session_token = 1;
+  string username = 2;
+  string password = 3;
+  string role = 4;
+}
+
+message CreatePlayerResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ReadPlayerRequest {
+  string session_token = 1;
+  int32 user_id = 2;
+}
+
+message ReadPlayerResponse {
+  bool success = 1;
+  string message = 2;
+  int32 user_id = 3;
+  string username = 4;
+  string role = 5;
+  int32 total_wins = 6;
+}
+
+message UpdatePlayerRequest {
+  string session_token = 1;
+  int32 user_id = 2;
+  string password = 3;
+  string role = 4;
+  string username = 5;
+  int32 total_wins = 6;
+}
+
+message UpdatePlayerResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message DeletePlayerRequest {
+  string session_token = 1;
+  int32 user_id = 2;
+}
+
+message DeletePlayerResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message SearchPlayerRequest {
+  string session_token = 1;
+  string keyword = 2;
+}
+
+message SearchPlayerResponse {
+  bool success = 1;
+  string message = 2;
+  repeated ReadPlayerResponse players = 3;
+}
+
+message GetConfigRequest {
+  string session_token = 1;
+}
+
+message ConfigItem {
+  string key = 1;
+  int32 value = 2;
+}
+
+message GetConfigResponse {
+  bool success = 1;
+  string message = 2;
+  repeated ConfigItem configs = 3;
+}
+
+message UpdateConfigRequest {
+  string session_token = 1;
+  string key = 2;
+  int32 value = 3;
+}
+
+message UpdateConfigResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// ============================================
+// Services
+// ============================================
+
+service PlayerService {
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+  rpc JoinGame(JoinGameRequest) returns (JoinGameResponse);
+  rpc PollGameState(GameStateRequest) returns (GameStateResponse);
+  rpc SubmitWord(SubmitWordRequest) returns (SubmitWordResponse);
+  rpc GetLeaderboard(GetLeaderboardRequest) returns (GetLeaderboardResponse);
+}
+
+service AdminService {
+  rpc AdminLogin(LoginRequest) returns (LoginResponse);
+  rpc CreatePlayer(CreatePlayerRequest) returns (CreatePlayerResponse);
+  rpc ReadPlayer(ReadPlayerRequest) returns (ReadPlayerResponse);
+  rpc UpdatePlayer(UpdatePlayerRequest) returns (UpdatePlayerResponse);
+  rpc DeletePlayer(DeletePlayerRequest) returns (DeletePlayerResponse);
+  rpc SearchPlayer(SearchPlayerRequest) returns (SearchPlayerResponse);
+  rpc GetConfig(GetConfigRequest) returns (GetConfigResponse);
+  rpc UpdateConfig(UpdateConfigRequest) returns (UpdateConfigResponse);
+}
+

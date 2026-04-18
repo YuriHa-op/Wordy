@@ -5,8 +5,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32f5cb93-4d05-4144-98a4-e72191b7273b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilotDiffState.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/AdminApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/controller/AdminDashboardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/controller/AdminLoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/controller/PlayerManagementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/model/AdminGrpcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/view/AdminDashboardView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/view/AdminLoginView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/view/PlayerManagementView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/PlayerApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/controller/GameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/controller/LeaderboardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/model/PlayerGrpcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/view/GameView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/view/HomeView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/view/LeaderboardView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/view/LoginView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/MinecraftColors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/MinecraftFonts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/ChatBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/HealthBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/InventorySlot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/LetterTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/MinecraftButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/MinecraftLabel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/MinecraftPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/MinecraftPasswordField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/MinecraftTextField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/util/MinecraftDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/util/TextureLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/AdminServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/PlayerServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/db/ConfigDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/db/DatabaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/db/LongestWordDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/db/UserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/dto/LongestWordDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/core/GameManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/core/GameSession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/core/SessionManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/data/WordValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/model/PlayerState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/model/Round.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/service/GameService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/service/LeaderboardService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/proto/WordyService.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/server/handler/core/SessionManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/server/handler/data/WordValidatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/GrpcClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/admin/controller/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/admin/model/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/admin/view/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/controller/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/model/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/view/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/GrpcServant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/GrpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/GrpcServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/game.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/game.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/dto/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/handler/core/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/handler/data/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/handler/model/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/handler/service/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/GreetingService.proto" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +92,8 @@
   </component>
   <component name="CopilotUserSelectedModel">
     <selectedModels>
-      <entry key="chat-panel" value="Gemini 3.1 Pro" />
-      <entry key="agent-panel" value="Gemini 3.1 Pro" />
+      <entry key="chat-panel" value="GPT-5.3-Codex" />
+      <entry key="agent-panel" value="GPT-5.3-Codex" />
     </selectedModels>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -41,16 +110,22 @@
     <commands />
     <urls />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="3CWdjkZchi6Jg6wCXXegN2zeVMe" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.AdminApp.executor": "Run",
+    "Application.GrpcServer.executor": "Run",
+    "Application.PlayerApp.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
@@ -82,6 +157,59 @@
       <recent name="C:\Users\hawci\IdeaProjects\9331-team4_finproject\src\main\resources" />
     </key>
   </component>
+  <component name="RunManager" selected="Application.PlayerApp">
+    <configuration name="AdminApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.admin.AdminApp" />
+      <module name="9331-team4_finproject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GrpcServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.GrpcServer" />
+      <module name="9331-team4_finproject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerApp" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.player.PlayerApp" />
+      <module name="9331-team4_finproject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.player.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.AdminApp" />
+      <item itemvalue="Application.GrpcServer" />
+      <item itemvalue="Application.PlayerApp" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.PlayerApp" />
+        <item itemvalue="Application.GrpcServer" />
+        <item itemvalue="Application.AdminApp" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="32f5cb93-4d05-4144-98a4-e72191b7273b" name="Changes" comment="" />
@@ -90,6 +218,7 @@
       <option name="presentableId" value="Default" />
       <updated>1776505397504</updated>
       <workItem from="1776505398957" duration="2776000" />
+      <workItem from="1776522421596" duration="15455000" />
     </task>
     <servers />
   </component>

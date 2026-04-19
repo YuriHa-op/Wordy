@@ -5,77 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32f5cb93-4d05-4144-98a4-e72191b7273b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/AdminApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/controller/AdminDashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/controller/AdminLoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/controller/PlayerManagementController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/model/AdminGrpcClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/view/AdminDashboardView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/view/AdminLoginView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/admin/view/PlayerManagementView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/PlayerApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/controller/GameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/controller/LeaderboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/model/PlayerGrpcClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/view/GameView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/view/HomeView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/view/LeaderboardView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/player/view/LoginView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/MinecraftColors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/MinecraftFonts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/ChatBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/HealthBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/InventorySlot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/LetterTile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/MinecraftButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/MinecraftLabel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/MinecraftPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/MinecraftPasswordField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/MinecraftTextField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/util/MinecraftDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/util/TextureLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/AdminServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/PlayerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/db/ConfigDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/db/DatabaseConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/db/LongestWordDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/db/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/dto/LongestWordDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/dto/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/core/GameManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/core/GameSession.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/core/SessionManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/data/WordValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/model/PlayerState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/model/Round.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/service/AuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/service/GameService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/handler/service/LeaderboardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/proto/WordyService.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/server/handler/core/SessionManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/server/handler/data/WordValidatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/GrpcClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/admin/controller/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/admin/model/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/admin/view/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/controller/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/model/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/view/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/GrpcServant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/GrpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/GrpcServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/game.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/db/game.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/dto/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/handler/core/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/handler/data/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/handler/model/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/handler/service/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/GreetingService.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/player/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/view/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/player/view/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/handler/core/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/handler/core/GameManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +41,34 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;YuriHa-op&quot;
+  }
+}</component>
+  <component name="GitLabMergeRequestFiltersHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPENED",
+    "assignee": {
+      "type": "org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue",
+      "username": "HartCrane",
+      "fullname": "Hart Crane"
+    }
+  }
+}]]></component>
+  <component name="GitLabMergeRequestsSettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "first": "https://gitlab.com/slu2/faculty/rbmakil/2025-2026/term2/9331/9331_g4/9331-team4_finproject.git",
+    "second": "2ea5915c-1b98-45e8-8e39-57239c80046d"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/YuriHa-op/Wordy.git&quot;,
+    &quot;accountId&quot;: &quot;71e78897-c10a-4456-b731-d01431b4ca26&quot;
+  }
+}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -121,43 +84,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AdminApp.executor": "Run",
-    "Application.GrpcServer.executor": "Run",
-    "Application.PlayerApp.executor": "Run",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.24367817",
-    "settings.editor.selected.configurable": "com.github.copilot.settings.customization.CustomizationConfigurable",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AdminApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GrpcServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PlayerApp.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.24367817&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.customization.CustomizationConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\hawci\IdeaProjects\9331-team4_finproject\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PlayerApp">
+  <component name="RunManager" selected="Application.AdminApp">
     <configuration name="AdminApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.admin.AdminApp" />
       <module name="9331-team4_finproject" />
@@ -204,9 +167,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AdminApp" />
         <item itemvalue="Application.PlayerApp" />
         <item itemvalue="Application.GrpcServer" />
-        <item itemvalue="Application.AdminApp" />
       </list>
     </recent_temporary>
   </component>
@@ -218,7 +181,8 @@
       <option name="presentableId" value="Default" />
       <updated>1776505397504</updated>
       <workItem from="1776505398957" duration="2776000" />
-      <workItem from="1776522421596" duration="15455000" />
+      <workItem from="1776522421596" duration="18458000" />
+      <workItem from="1776542472630" duration="296000" />
     </task>
     <servers />
   </component>

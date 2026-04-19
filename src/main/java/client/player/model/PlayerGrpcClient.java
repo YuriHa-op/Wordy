@@ -88,6 +88,11 @@ public class PlayerGrpcClient {
         return currentUsername;
     }
 
+    public void clearLocalSession() {
+        this.sessionToken = null;
+        this.currentUsername = null;
+    }
+
     public void shutdown() {
         try {
             channel.shutdownNow().awaitTermination(2, TimeUnit.SECONDS);

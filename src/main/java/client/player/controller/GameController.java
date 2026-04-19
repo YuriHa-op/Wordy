@@ -6,6 +6,7 @@ import com.wordy.grpc.GameStateResponse;
 import com.wordy.grpc.JoinGameResponse;
 import com.wordy.grpc.PlayerScore;
 import com.wordy.grpc.SubmitWordResponse;
+import client.ui.util.MinecraftDialog;
 
 import javax.swing.Timer;
 import java.awt.Color;
@@ -22,6 +23,7 @@ public class GameController {
     private String previousRoundWinner = "";
     private boolean gameOverShown;
     private boolean noMatchPopupShown;
+    private boolean sessionInvalidHandled;
 
     public GameController(PlayerGrpcClient client) {
         this.client = client;
@@ -47,6 +49,10 @@ public class GameController {
 
     private void startJoinAndPolling() {
         JoinGameResponse join = client.joinGame();
+        if (!join.getSuccess() || "INVALID_SESSION".equals(join.getStatus())) {
+            handleInvalidSession();
+            return;
+        }
         if (join.getGameId() > 0) {
             gameId = join.getGameId();
         }
@@ -60,6 +66,10 @@ public class GameController {
     private void pollState() {
         GameStateResponse state = client.pollGameState(gameId);
         if (!state.getSuccess()) {
+            if ("INVALID_SESSION".equals(state.getStatus())) {
+                handleInvalidSession();
+                return;
+            }
             if ("NO_MATCH".equals(state.getStatus()) && !noMatchPopupShown) {
                 noMatchPopupShown = true;
                 view.showNoMatchFoundPopup();
@@ -199,11 +209,27 @@ public class GameController {
             view.getSubmitMessageLabel().setText("Word submitted");
         } else {
             view.getSubmitMessageLabel().setText(response.getMessage());
+            if ("Invalid session".equalsIgnoreCase(response.getMessage())) {
+                handleInvalidSession();
+                return;
+            }
         }
         view.appendLog(">> " + word + " -> " + response.getMessage());
         if (response.getSuccess()) {
             view.getWordField().setText("");
         }
+    }
+
+    private void handleInvalidSession() {
+        if (sessionInvalidHandled) {
+            return;
+        }
+        sessionInvalidHandled = true;
+        stopPolling();
+        client.clearLocalSession();
+        MinecraftDialog.showMessage(view, "Session Ended", "This account was logged in from another client.");
+        view.dispose();
+        new LoginController().show();
     }
 
     private int calculateRemainingHearts(GameStateResponse state, PlayerScore score) {
@@ -230,4 +256,3 @@ public class GameController {
         }
     }
 }
-

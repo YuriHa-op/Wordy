@@ -53,6 +53,10 @@ public class GameView extends JFrame {
     private String lastLettersSignature = "";
 
     public GameView() {
+        this(true);
+    }
+
+    public GameView(boolean enterSubmitEnabled) {
         setTitle("Wordy - Game");
         setSize(1160, 760);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -169,7 +173,9 @@ public class GameView extends JFrame {
         root.add(splitPane, BorderLayout.SOUTH);
 
         setContentPane(root);
-        getRootPane().setDefaultButton(submitButton);
+        if (enterSubmitEnabled) {
+            getRootPane().setDefaultButton(submitButton);
+        }
     }
 
     public void setLetters(List<String> letters) {

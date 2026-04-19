@@ -9,7 +9,6 @@ import server.handler.model.PlayerState;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +31,22 @@ public class GameManager {
         public JoinResult(String status, int gameId) {
             this.status = status;
             this.gameId = gameId;
+        }
+    }
+
+    public static class MonitorEntry {
+        public final int gameId;
+        public final String state;
+        public final int roundNumber;
+        public final List<String> players;
+        public final List<String> availableWords;
+
+        public MonitorEntry(int gameId, String state, int roundNumber, List<String> players, List<String> availableWords) {
+            this.gameId = gameId;
+            this.state = state;
+            this.roundNumber = roundNumber;
+            this.players = players;
+            this.availableWords = availableWords;
         }
     }
 
@@ -71,7 +86,6 @@ public class GameManager {
             lobbyDeadlineMillis = System.currentTimeMillis() + waitingTime * 1000L;
             scheduler.schedule(this::promoteLobbyToGame, waitingTime, TimeUnit.SECONDS);
         }
-        logOngoingGames("join by " + username);
         return new JoinResult("WAITING", -1);
     }
 
@@ -81,7 +95,6 @@ public class GameManager {
             timedOutLobbyUsers.addAll(lobby);
             lobby.clear();
             lobbyDeadlineMillis = 0L;
-            logOngoingGames("matchmaking timed out");
             return;
         }
 
@@ -97,7 +110,6 @@ public class GameManager {
         lobbyDeadlineMillis = 0L;
 
         startRound(session, 1);
-        logOngoingGames("game " + gameId + " started");
     }
 
     public GameSession getGameForUser(String username) {
@@ -145,16 +157,12 @@ public class GameManager {
         }
 
         boolean accepted = session.submitWord(username, word.toUpperCase(), roundNumber);
-        if (accepted) {
-            logOngoingGames("word submitted by " + username + " in game " + gameId);
-        }
         return accepted;
     }
 
     private void startRound(GameSession session, int roundNumber) {
         int duration = configDAO.getConfigValue("round_duration", 30);
         session.startRound(generateLetters(), duration, roundNumber);
-        logOngoingGames("round " + roundNumber + " started in game " + session.getGameId());
         scheduler.schedule(() -> resolveRound(session.getGameId(), roundNumber), duration, TimeUnit.SECONDS);
     }
 
@@ -196,15 +204,11 @@ public class GameManager {
             for (PlayerState playerState : session.getPlayersSnapshot()) {
                 userGameIndex.remove(playerState.getUsername());
             }
-            logOngoingGames("game " + session.getGameId() + " finished (retained briefly for client polling)");
             scheduler.schedule(() -> {
                 activeGames.remove(session.getGameId());
-                logOngoingGames("game " + session.getGameId() + " cleaned up");
             }, GAME_OVER_RETENTION_SECONDS, TimeUnit.SECONDS);
             return;
         }
-
-        logOngoingGames("round " + roundNumber + " resolved for game " + gameId);
 
         scheduler.schedule(() -> startRound(session, roundNumber + 1), 2, TimeUnit.SECONDS);
     }
@@ -265,19 +269,11 @@ public class GameManager {
         return scores;
     }
 
-    public void shutdown() {
-        scheduler.shutdownNow();
-    }
-
-    private void logOngoingGames(String reason) {
-        Map<Integer, String> lines = new LinkedHashMap<>();
+    public synchronized List<MonitorEntry> getMonitorSnapshot() {
+        List<MonitorEntry> snapshot = new ArrayList<>();
         for (Map.Entry<Integer, GameSession> entry : activeGames.entrySet()) {
             GameSession session = entry.getValue();
             List<PlayerState> players = session.getPlayersSnapshot();
-            if (players.isEmpty()) {
-                continue;
-            }
-
             List<String> names = new ArrayList<>();
             for (PlayerState player : players) {
                 names.add(player.getUsername());
@@ -287,22 +283,23 @@ public class GameManager {
                     ? Collections.emptyList()
                     : WordValidator.findSubmittableWords(session.getCurrentRound().getLetters(), 5);
 
-            String line = "[Game " + session.getGameId() + "] state=" + session.getState()
-                    + " round=" + (session.getCurrentRound() == null ? 0 : session.getCurrentRound().getRoundNumber())
-                    + " matchup=" + String.join(" vs ", names)
-                    + " availableWords=" + availableWords;
-            lines.put(entry.getKey(), line);
+            snapshot.add(new MonitorEntry(
+                    session.getGameId(),
+                    session.getState(),
+                    session.getCurrentRound() == null ? 0 : session.getCurrentRound().getRoundNumber(),
+                    names,
+                    availableWords
+            ));
         }
+        return snapshot;
+    }
 
-        System.out.println("\n===== Ongoing Games (" + reason + ") =====");
-        if (lines.isEmpty()) {
-            System.out.println("No active games.");
-        } else {
-            for (String line : lines.values()) {
-                System.out.println(line);
-            }
-        }
-        System.out.println("===========================================\n");
+    public synchronized List<String> getLobbySnapshot() {
+        return new ArrayList<>(lobby);
+    }
+
+    public void shutdown() {
+        scheduler.shutdownNow();
     }
 }
 

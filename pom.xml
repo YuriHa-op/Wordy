@@ -32,9 +32,9 @@
                        Mac (M1/M2/M3): osx-aarch_64
                        Linux: linux-x86_64
                    -->
-                   <protocArtifact>com.google.protobuf:protoc:3.25.1:exe:${os.detected.classifier}</protocArtifact>
+                   <protocArtifact>com.google.protobuf:protoc:3.25.1:exe:windows-x86_64</protocArtifact>
                    <pluginId>grpc-java</pluginId>
-                   <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.62.2:exe:${os.detected.classifier}</pluginArtifact>
+                   <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.62.2:exe:windows-x86_64</pluginArtifact>
                </configuration>
                <executions>
                    <execution>
@@ -50,6 +50,31 @@
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-compiler-plugin</artifactId>
                <version>3.8.1</version>
+           </plugin>
+           <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-surefire-plugin</artifactId>
+               <version>3.2.5</version>
+           </plugin>
+           <plugin>
+               <groupId>org.codehaus.mojo</groupId>
+               <artifactId>build-helper-maven-plugin</artifactId>
+               <version>3.6.0</version>
+               <executions>
+                   <execution>
+                       <id>add-protobuf-generated-sources</id>
+                       <phase>generate-sources</phase>
+                       <goals>
+                           <goal>add-source</goal>
+                       </goals>
+                       <configuration>
+                           <sources>
+                               <source>${project.build.directory}/generated-sources/protobuf/java</source>
+                               <source>${project.build.directory}/generated-sources/protobuf/grpc-java</source>
+                           </sources>
+                       </configuration>
+                   </execution>
+               </executions>
            </plugin>
        </plugins>
     </build>
@@ -84,6 +109,18 @@
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>8.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

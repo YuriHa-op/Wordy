@@ -42,7 +42,10 @@ public class AuthService {
             }
             String token = sessionManager.createSession(username, user.getRole());
             userDAO.updateLoginStatus(username, true);
-            return new AuthResult(true, "Login successful", token);
+            String message = oldToken == null
+                    ? "Login successful"
+                    : "Login successful. Previous session disconnected.";
+            return new AuthResult(true, message, token);
         } catch (Exception e) {
             return new AuthResult(false, "Login error: " + e.getMessage(), "");
         }

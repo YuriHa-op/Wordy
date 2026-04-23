@@ -68,3 +68,4 @@ message MatchStatus {
  string opponentName = 3;
 }
 
+}

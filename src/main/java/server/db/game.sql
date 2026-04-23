@@ -1,4 +1,3 @@
--- Initial draft for Wordy Game database tables
 
 -- Table to store both players and administrators
 CREATE TABLE IF NOT EXISTS users (
@@ -10,14 +9,14 @@ CREATE TABLE IF NOT EXISTS users (
     is_logged_in BOOLEAN DEFAULT FALSE
 );
 
--- Table to manage game configuration by the administrator
+-- Tabel configuration by the administrator
 CREATE TABLE IF NOT EXISTS game_config (
     id INT PRIMARY KEY DEFAULT 1,
     wait_time_seconds INT DEFAULT 10,
     round_duration_seconds INT DEFAULT 30
 );
 
--- Table to track the longest words formed globally
+-- Table longest words formed
 CREATE TABLE IF NOT EXISTS longest_words (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -26,6 +25,6 @@ CREATE TABLE IF NOT EXISTS longest_words (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- Placeholder to ensure config row exists, ignore on duplicate
+-- ignore on duplicate
 INSERT IGNORE INTO game_config (id, wait_time_seconds, round_duration_seconds) VALUES (1, 10, 30);
 

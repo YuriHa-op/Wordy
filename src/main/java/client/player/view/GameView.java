@@ -1,14 +1,14 @@
 package client.player.view;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
+import client.ui.UiColors;
+import client.ui.UiFonts;
 import client.ui.components.ChatBox;
 import client.ui.components.HealthBar;
 import client.ui.components.LetterTile;
-import client.ui.components.MinecraftButton;
-import client.ui.components.MinecraftLabel;
-import client.ui.components.MinecraftPanel;
-import client.ui.components.MinecraftTextField;
+import client.ui.components.StyledButton;
+import client.ui.components.StyledLabel;
+import client.ui.components.StyledPanel;
+import client.ui.components.StyledTextField;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -35,17 +35,17 @@ import java.util.List;
 
 public class GameView extends JFrame {
 
-    private final JLabel statusLabel = new MinecraftLabel("Status: WAITING", MinecraftFonts.SMALL, MinecraftColors.TEXT_AQUA);
-    private final JLabel roundLabel = new MinecraftLabel("Round: 0", MinecraftFonts.SMALL, MinecraftColors.TEXT_WHITE);
-    private final JLabel timerLabel = new MinecraftLabel("Time: 0", MinecraftFonts.REGULAR, MinecraftColors.TEXT_WHITE);
+    private final JLabel statusLabel = new StyledLabel("Status: WAITING", UiFonts.SMALL, UiColors.TEXT_AQUA);
+    private final JLabel roundLabel = new StyledLabel("Round: 0", UiFonts.SMALL, UiColors.TEXT_WHITE);
+    private final JLabel timerLabel = new StyledLabel("Time: 0", UiFonts.REGULAR, UiColors.TEXT_WHITE);
     private final JLabel playerNameLabel = new JLabel("Player: -");
     private final JTextArea lettersArea = new JTextArea(2, 30);
     private final JEditorPane scoreArea = new JEditorPane("text/html", "");
-    private final JTextField wordField = new MinecraftTextField(24);
-    private final JButton submitButton = new MinecraftButton("SUBMIT");
-    private final JButton backspaceButton = new MinecraftButton("BACKSPACE");
-    private final JButton backButton = new MinecraftButton("BACK HOME");
-    private final JLabel submitMessageLabel = new MinecraftLabel(" ", MinecraftFonts.SMALL, MinecraftColors.TEXT_GREEN);
+    private final JTextField wordField = new StyledTextField(24);
+    private final JButton submitButton = new StyledButton("SUBMIT");
+    private final JButton backspaceButton = new StyledButton("BACKSPACE");
+    private final JButton backButton = new StyledButton("BACK HOME");
+    private final JLabel submitMessageLabel = new StyledLabel(" ", UiFonts.SMALL, UiColors.TEXT_GREEN);
     private final ChatBox chatBox = new ChatBox();
     private final HealthBar healthBar = new HealthBar(3);
     private final List<LetterTile> letterTiles = new ArrayList<>();
@@ -65,12 +65,12 @@ public class GameView extends JFrame {
         lettersArea.setEditable(false);
         lettersArea.setVisible(false);
         scoreArea.setEditable(false);
-        scoreArea.setFont(MinecraftFonts.SMALL);
-        scoreArea.setForeground(MinecraftColors.TEXT_WHITE);
+        scoreArea.setFont(UiFonts.SMALL);
+        scoreArea.setForeground(UiColors.TEXT_WHITE);
         scoreArea.setBackground(new Color(20, 20, 20));
         scoreArea.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
 
-        MinecraftPanel root = new MinecraftPanel("/textures/cobblestone.png", 80);
+        StyledPanel root = new StyledPanel("/textures/cobblestone.png", 80);
         root.setLayout(new BorderLayout(10, 10));
         root.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
 
@@ -86,8 +86,8 @@ public class GameView extends JFrame {
 
         JPanel heartInfo = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 2));
         heartInfo.setOpaque(false);
-        playerNameLabel.setFont(MinecraftFonts.SMALL);
-        playerNameLabel.setForeground(MinecraftColors.TEXT_GREEN);
+        playerNameLabel.setFont(UiFonts.SMALL);
+        playerNameLabel.setForeground(UiColors.TEXT_GREEN);
         playerNameLabel.setPreferredSize(new Dimension(180, 30));
         heartInfo.add(healthBar);
         top.add(heartInfo);
@@ -119,7 +119,7 @@ public class GameView extends JFrame {
         JPanel left = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 16));
         left.setOpaque(false);
         wordField.setPreferredSize(new Dimension(420, 46));
-        left.add(new MinecraftLabel("Your word:", MinecraftFonts.REGULAR, MinecraftColors.TEXT_WHITE));
+        left.add(new StyledLabel("Your word:", UiFonts.REGULAR, UiColors.TEXT_WHITE));
         left.add(wordField);
         input.add(left, BorderLayout.WEST);
 
@@ -282,14 +282,14 @@ public class GameView extends JFrame {
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
 
         JLabel title = new JLabel("NO MATCH FOUND", JLabel.CENTER);
-        title.setFont(MinecraftFonts.LARGE);
+        title.setFont(UiFonts.LARGE);
         title.setForeground(new Color(255, 170, 0));
 
         JLabel details = new JLabel("Matchmaking timer ran out.", JLabel.CENTER);
-        details.setFont(MinecraftFonts.REGULAR);
-        details.setForeground(MinecraftColors.TEXT_WHITE);
+        details.setFont(UiFonts.REGULAR);
+        details.setForeground(UiColors.TEXT_WHITE);
 
-        MinecraftButton ok = new MinecraftButton("OK");
+        StyledButton ok = new StyledButton("OK");
         ok.setPreferredSize(new Dimension(160, 42));
         ok.addActionListener(e -> dialog.dispose());
 
@@ -323,11 +323,11 @@ public class GameView extends JFrame {
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
 
         JLabel result = new JLabel(isWinner ? "YOU WIN!" : "YOU LOST!", JLabel.CENTER);
-        result.setFont(MinecraftFonts.TITLE.deriveFont(52f));
+        result.setFont(UiFonts.TITLE.deriveFont(52f));
         result.setForeground(isWinner ? new Color(85, 255, 85) : new Color(255, 85, 85));
 
         JLabel winner = new JLabel("Winner: " + winnerName, JLabel.CENTER);
-        winner.setFont(MinecraftFonts.LARGE);
+        winner.setFont(UiFonts.LARGE);
         winner.setForeground(new Color(255, 85, 85));
 
         JPanel centerContent = new JPanel(new BorderLayout(8, 8));
@@ -340,7 +340,7 @@ public class GameView extends JFrame {
         panel.add(centerContent, BorderLayout.CENTER);
 
         JLabel clickHint = new JLabel("Click anywhere to continue", JLabel.CENTER);
-        clickHint.setFont(MinecraftFonts.SMALL);
+        clickHint.setFont(UiFonts.SMALL);
         clickHint.setForeground(new Color(170, 170, 170));
         panel.add(clickHint, BorderLayout.SOUTH);
 

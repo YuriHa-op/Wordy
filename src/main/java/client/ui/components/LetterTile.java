@@ -1,7 +1,7 @@
 package client.ui.components;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
+import client.ui.UiColors;
+import client.ui.UiFonts;
 
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -60,14 +60,14 @@ public class LetterTile extends JPanel {
         g2.setColor(Color.BLACK);
         g2.drawRect(0, 0, w - 1, h - 1);
 
-        g2.setFont(MinecraftFonts.LARGE);
+        g2.setFont(UiFonts.LARGE);
         String text = String.valueOf(letter);
         FontMetrics fm = g2.getFontMetrics();
         int tx = (w - fm.stringWidth(text)) / 2;
         int ty = (h + fm.getAscent()) / 2 - 3;
-        g2.setColor(MinecraftColors.TEXT_SHADOW);
+        g2.setColor(UiColors.TEXT_SHADOW);
         g2.drawString(text, tx + 2, ty + 2);
-        g2.setColor(MinecraftColors.TEXT_YELLOW);
+        g2.setColor(UiColors.TEXT_YELLOW);
         g2.drawString(text, tx, ty);
         g2.dispose();
     }

@@ -1,7 +1,7 @@
 package client.ui.components;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
+import client.ui.UiColors;
+import client.ui.UiFonts;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -10,17 +10,17 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class MinecraftLabel extends JLabel {
-    private Color shadowColor = MinecraftColors.TEXT_SHADOW;
+public class StyledLabel extends JLabel {
+    private Color shadowColor = UiColors.TEXT_SHADOW;
 
-    public MinecraftLabel(String text) {
+    public StyledLabel(String text) {
         super(text);
-        setFont(MinecraftFonts.REGULAR);
-        setForeground(MinecraftColors.TEXT_WHITE);
+        setFont(UiFonts.REGULAR);
+        setForeground(UiColors.TEXT_WHITE);
         setOpaque(false);
     }
 
-    public MinecraftLabel(String text, Font font, Color color) {
+    public StyledLabel(String text, Font font, Color color) {
         super(text);
         setFont(font);
         setForeground(color);

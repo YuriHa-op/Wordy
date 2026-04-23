@@ -6,7 +6,7 @@ import com.wordy.grpc.GameStateResponse;
 import com.wordy.grpc.JoinGameResponse;
 import com.wordy.grpc.PlayerScore;
 import com.wordy.grpc.SubmitWordResponse;
-import client.ui.util.MinecraftDialog;
+import client.ui.util.StyledDialog;
 
 import javax.swing.Timer;
 import java.awt.Color;
@@ -227,7 +227,7 @@ public class GameController {
         sessionInvalidHandled = true;
         stopPolling();
         client.clearLocalSession();
-        MinecraftDialog.showMessage(view, "Session Ended", "This account was logged in from another client.");
+        StyledDialog.showMessage(view, "Session Ended", "This account was logged in from another client.");
         view.dispose();
         new LoginController().show();
     }

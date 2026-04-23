@@ -1,11 +1,11 @@
 package client.admin.view;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
-import client.ui.components.MinecraftButton;
-import client.ui.components.MinecraftLabel;
-import client.ui.components.MinecraftPanel;
-import client.ui.components.MinecraftTextField;
+import client.ui.UiColors;
+import client.ui.UiFonts;
+import client.ui.components.StyledButton;
+import client.ui.components.StyledLabel;
+import client.ui.components.StyledPanel;
+import client.ui.components.StyledTextField;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -23,15 +23,15 @@ import java.awt.GridLayout;
 public class AdminDashboardView extends JFrame {
 
     private final PlayerManagementView playerManagementView = new PlayerManagementView();
-    private final JTextField waitingTimeField = new MinecraftTextField(8);
-    private final JTextField roundDurationField = new MinecraftTextField(8);
-    private final JButton loadConfigButton = new MinecraftButton("LOAD CONFIG");
-    private final JButton saveConfigButton = new MinecraftButton("SAVE CONFIG");
+    private final JTextField waitingTimeField = new StyledTextField(8);
+    private final JTextField roundDurationField = new StyledTextField(8);
+    private final JButton loadConfigButton = new StyledButton("LOAD CONFIG");
+    private final JButton saveConfigButton = new StyledButton("SAVE CONFIG");
     private final JLabel configMessageLabel = new JLabel(" ");
-    private final JButton closeButton = new MinecraftButton("LOGOUT");
+    private final JButton closeButton = new StyledButton("LOGOUT");
 
-    private final JButton playersNavButton = new MinecraftButton("PLAYERS");
-    private final JButton configNavButton = new MinecraftButton("CONFIG");
+    private final JButton playersNavButton = new StyledButton("PLAYERS");
+    private final JButton configNavButton = new StyledButton("CONFIG");
     private final JPanel contentCards = new JPanel(new CardLayout());
 
     public AdminDashboardView() {
@@ -40,7 +40,7 @@ public class AdminDashboardView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        MinecraftPanel root = new MinecraftPanel("/textures/stone.png", 95);
+        StyledPanel root = new StyledPanel("/textures/stone.png", 95);
         root.setLayout(new BorderLayout(10, 10));
         root.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
 
@@ -61,7 +61,7 @@ public class AdminDashboardView extends JFrame {
     private JPanel buildTopBar() {
         JPanel top = new JPanel(new BorderLayout());
         top.setOpaque(false);
-        top.add(new MinecraftLabel("ADMIN CONSOLE", MinecraftFonts.LARGE, MinecraftColors.TEXT_RED), BorderLayout.WEST);
+        top.add(new StyledLabel("ADMIN CONSOLE", UiFonts.LARGE, UiColors.TEXT_RED), BorderLayout.WEST);
         top.add(closeButton, BorderLayout.EAST);
         return top;
     }
@@ -87,11 +87,11 @@ public class AdminDashboardView extends JFrame {
     private JPanel buildConfigPanel() {
         JPanel panel = new JPanel(new GridLayout(6, 2, 8, 8));
         panel.setOpaque(false);
-        configMessageLabel.setFont(MinecraftFonts.SMALL);
-        configMessageLabel.setForeground(MinecraftColors.TEXT_AQUA);
-        panel.add(new MinecraftLabel("Waiting Time (s)", MinecraftFonts.REGULAR, MinecraftColors.TEXT_WHITE));
+        configMessageLabel.setFont(UiFonts.SMALL);
+        configMessageLabel.setForeground(UiColors.TEXT_AQUA);
+        panel.add(new StyledLabel("Waiting Time (s)", UiFonts.REGULAR, UiColors.TEXT_WHITE));
         panel.add(waitingTimeField);
-        panel.add(new MinecraftLabel("Round Duration (s)", MinecraftFonts.REGULAR, MinecraftColors.TEXT_WHITE));
+        panel.add(new StyledLabel("Round Duration (s)", UiFonts.REGULAR, UiColors.TEXT_WHITE));
         panel.add(roundDurationField);
         panel.add(loadConfigButton);
         panel.add(saveConfigButton);

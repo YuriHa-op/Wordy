@@ -2,8 +2,8 @@ package client.ui;
 
 import java.awt.Color;
 
-public final class MinecraftColors {
-    private MinecraftColors() {
+public final class UiColors {
+    private UiColors() {
     }
 
     public static final Color DIRT_BROWN = new Color(134, 96, 67);

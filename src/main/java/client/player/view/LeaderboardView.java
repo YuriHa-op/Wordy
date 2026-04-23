@@ -1,11 +1,11 @@
 package client.player.view;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
+import client.ui.UiColors;
+import client.ui.UiFonts;
 import client.ui.components.InventorySlot;
-import client.ui.components.MinecraftButton;
-import client.ui.components.MinecraftLabel;
-import client.ui.components.MinecraftPanel;
+import client.ui.components.StyledButton;
+import client.ui.components.StyledLabel;
+import client.ui.components.StyledPanel;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,7 +21,7 @@ import java.util.List;
 public class LeaderboardView extends JFrame {
 
     private final JTextArea boardArea = new JTextArea();
-    private final JButton backButton = new MinecraftButton("BACK HOME");
+    private final JButton backButton = new StyledButton("BACK HOME");
     private final JPanel winnersPanel = new JPanel(new GridLayout(5, 1, 0, 6));
     private final JPanel wordsPanel = new JPanel(new GridLayout(5, 1, 0, 6));
 
@@ -31,11 +31,11 @@ public class LeaderboardView extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        MinecraftPanel root = new MinecraftPanel("/textures/stone.png", 85);
+        StyledPanel root = new StyledPanel("/textures/stone.png", 85);
         root.setLayout(new BorderLayout(10, 10));
         root.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        MinecraftLabel title = new MinecraftLabel("TOP PLAYERS", MinecraftFonts.LARGE, MinecraftColors.TEXT_GOLD);
+        StyledLabel title = new StyledLabel("TOP PLAYERS", UiFonts.LARGE, UiColors.TEXT_GOLD);
         title.setHorizontalAlignment(SwingConstants.CENTER);
         root.add(title, BorderLayout.NORTH);
 
@@ -80,7 +80,7 @@ public class LeaderboardView extends JFrame {
                 javax.swing.BorderFactory.createLineBorder(Color.BLACK, 2),
                 javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8)
         ));
-        section.add(new MinecraftLabel(title, MinecraftFonts.REGULAR, MinecraftColors.TEXT_YELLOW), BorderLayout.NORTH);
+        section.add(new StyledLabel(title, UiFonts.REGULAR, UiColors.TEXT_YELLOW), BorderLayout.NORTH);
         section.add(content, BorderLayout.CENTER);
         return section;
     }

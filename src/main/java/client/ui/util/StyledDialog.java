@@ -1,10 +1,10 @@
 package client.ui.util;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
-import client.ui.components.MinecraftButton;
-import client.ui.components.MinecraftLabel;
-import client.ui.components.MinecraftPanel;
+import client.ui.UiColors;
+import client.ui.UiFonts;
+import client.ui.components.StyledButton;
+import client.ui.components.StyledLabel;
+import client.ui.components.StyledPanel;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -13,22 +13,22 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
 
-public final class MinecraftDialog {
-    private MinecraftDialog() {
+public final class StyledDialog {
+    private StyledDialog() {
     }
 
     public static void showMessage(Component parent, String title, String message) {
         JDialog dialog = baseDialog(parent, title);
 
-        MinecraftPanel panel = new MinecraftPanel("/textures/stone.png", 70);
+        StyledPanel panel = new StyledPanel("/textures/stone.png", 70);
         panel.setLayout(new BorderLayout(10, 10));
 
-        MinecraftLabel label = new MinecraftLabel(message, MinecraftFonts.REGULAR, MinecraftColors.TEXT_WHITE);
+        StyledLabel label = new StyledLabel(message, UiFonts.REGULAR, UiColors.TEXT_WHITE);
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         panel.add(label, BorderLayout.CENTER);
 
-        MinecraftButton okButton = new MinecraftButton("OK");
+        StyledButton okButton = new StyledButton("OK");
         okButton.addActionListener(e -> dialog.dispose());
         JPanel bottom = new JPanel(new FlowLayout(FlowLayout.CENTER));
         bottom.setOpaque(false);
@@ -43,16 +43,16 @@ public final class MinecraftDialog {
         final boolean[] accepted = {false};
         JDialog dialog = baseDialog(parent, title);
 
-        MinecraftPanel panel = new MinecraftPanel("/textures/stone.png", 70);
+        StyledPanel panel = new StyledPanel("/textures/stone.png", 70);
         panel.setLayout(new BorderLayout(10, 10));
 
-        MinecraftLabel label = new MinecraftLabel(message, MinecraftFonts.REGULAR, MinecraftColors.TEXT_WHITE);
+        StyledLabel label = new StyledLabel(message, UiFonts.REGULAR, UiColors.TEXT_WHITE);
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         panel.add(label, BorderLayout.CENTER);
 
-        MinecraftButton yesButton = new MinecraftButton("YES");
-        MinecraftButton noButton = new MinecraftButton("NO");
+        StyledButton yesButton = new StyledButton("YES");
+        StyledButton noButton = new StyledButton("NO");
         yesButton.addActionListener(e -> {
             accepted[0] = true;
             dialog.dispose();

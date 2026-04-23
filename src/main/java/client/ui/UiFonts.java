@@ -6,13 +6,13 @@ import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 import java.io.InputStream;
 
-public final class MinecraftFonts {
+public final class UiFonts {
     public static final Font TITLE;
     public static final Font LARGE;
     public static final Font REGULAR;
     public static final Font SMALL;
 
-    private MinecraftFonts() {
+    private UiFonts() {
     }
 
     static {
@@ -21,7 +21,7 @@ public final class MinecraftFonts {
         Font regular;
         Font small;
 
-        try (InputStream is = MinecraftFonts.class.getResourceAsStream("/fonts/Minecraftia-Regular.ttf")) {
+        try (InputStream is = UiFonts.class.getResourceAsStream("/fonts/Minecraftia-Regular.ttf")) {
             if (is == null) {
                 throw new IOException("Missing /fonts/Minecraftia-Regular.ttf");
             }

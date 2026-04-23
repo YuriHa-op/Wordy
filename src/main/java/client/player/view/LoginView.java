@@ -1,12 +1,12 @@
 package client.player.view;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
-import client.ui.components.MinecraftButton;
-import client.ui.components.MinecraftLabel;
-import client.ui.components.MinecraftPasswordField;
-import client.ui.components.MinecraftPanel;
-import client.ui.components.MinecraftTextField;
+import client.ui.UiColors;
+import client.ui.UiFonts;
+import client.ui.components.StyledButton;
+import client.ui.components.StyledLabel;
+import client.ui.components.StyledPasswordField;
+import client.ui.components.StyledPanel;
+import client.ui.components.StyledTextField;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -24,9 +24,9 @@ import java.awt.Insets;
 
 public class LoginView extends JFrame {
 
-    private final JTextField usernameField = new MinecraftTextField(20);
-    private final JPasswordField passwordField = new MinecraftPasswordField(20);
-    private final JButton loginButton = new MinecraftButton("LOGIN");
+    private final JTextField usernameField = new StyledTextField(20);
+    private final JPasswordField passwordField = new StyledPasswordField(20);
+    private final JButton loginButton = new StyledButton("LOGIN");
     private final JLabel messageLabel = new JLabel(" ");
 
     public LoginView() {
@@ -35,7 +35,7 @@ public class LoginView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        MinecraftPanel background = new MinecraftPanel("/textures/dirt.png", 80);
+        StyledPanel background = new StyledPanel("/textures/dirt.png", 80);
         background.setLayout(new GridBagLayout());
 
         JPanel card = new JPanel(new GridBagLayout());
@@ -52,7 +52,7 @@ public class LoginView extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1;
 
-        MinecraftLabel title = new MinecraftLabel("WORDY", MinecraftFonts.TITLE, MinecraftColors.TEXT_YELLOW);
+        StyledLabel title = new StyledLabel("WORDY", UiFonts.TITLE, UiColors.TEXT_YELLOW);
         title.setHorizontalAlignment(SwingConstants.CENTER);
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -61,13 +61,13 @@ public class LoginView extends JFrame {
 
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        card.add(new MinecraftLabel("Username", MinecraftFonts.REGULAR, MinecraftColors.TEXT_WHITE), gbc);
+        card.add(new StyledLabel("Username", UiFonts.REGULAR, UiColors.TEXT_WHITE), gbc);
         gbc.gridx = 1;
         card.add(usernameField, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
-        card.add(new MinecraftLabel("Password", MinecraftFonts.REGULAR, MinecraftColors.TEXT_WHITE), gbc);
+        card.add(new StyledLabel("Password", UiFonts.REGULAR, UiColors.TEXT_WHITE), gbc);
         gbc.gridx = 1;
         card.add(passwordField, gbc);
 
@@ -77,8 +77,8 @@ public class LoginView extends JFrame {
         card.add(loginButton, gbc);
 
         messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        messageLabel.setFont(MinecraftFonts.SMALL);
-        messageLabel.setForeground(MinecraftColors.TEXT_RED);
+        messageLabel.setFont(UiFonts.SMALL);
+        messageLabel.setForeground(UiColors.TEXT_RED);
         gbc.gridy = 4;
         card.add(messageLabel, gbc);
 

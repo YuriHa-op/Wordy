@@ -1,10 +1,10 @@
 package client.player.view;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
-import client.ui.components.MinecraftButton;
-import client.ui.components.MinecraftLabel;
-import client.ui.components.MinecraftPanel;
+import client.ui.UiColors;
+import client.ui.UiFonts;
+import client.ui.components.StyledButton;
+import client.ui.components.StyledLabel;
+import client.ui.components.StyledPanel;
 
 import javax.swing.JButton;
 import javax.swing.Box;
@@ -19,11 +19,11 @@ import java.awt.FlowLayout;
 
 public class HomeView extends JFrame {
 
-    private final JButton startGameButton = new MinecraftButton("START WORDY GAME");
-    private final JButton leaderboardButton = new MinecraftButton("VIEW TOP PLAYERS");
-    private final JButton logoutButton = new MinecraftButton("LOGOUT");
+    private final JButton startGameButton = new StyledButton("START WORDY GAME");
+    private final JButton leaderboardButton = new StyledButton("VIEW TOP PLAYERS");
+    private final JButton logoutButton = new StyledButton("LOGOUT");
 
-    private final MinecraftLabel titleLabel = new MinecraftLabel("WORDY", MinecraftFonts.TITLE, MinecraftColors.TEXT_YELLOW);
+    private final StyledLabel titleLabel = new StyledLabel("WORDY", UiFonts.TITLE, UiColors.TEXT_YELLOW);
 
     public HomeView() {
         setTitle("Wordy - Home");
@@ -31,14 +31,14 @@ public class HomeView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        MinecraftPanel background = new MinecraftPanel("/textures/grass.png", 85);
+        StyledPanel background = new StyledPanel("/textures/grass.png", 85);
         background.setLayout(new BorderLayout(16, 16));
 
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setPreferredSize(new Dimension(0, 110));
         background.add(titleLabel, BorderLayout.NORTH);
 
-        MinecraftLabel welcome = new MinecraftLabel("Welcome to the server!", MinecraftFonts.REGULAR, MinecraftColors.TEXT_AQUA);
+        StyledLabel welcome = new StyledLabel("Welcome to the server!", UiFonts.REGULAR, UiColors.TEXT_AQUA);
         welcome.setHorizontalAlignment(SwingConstants.CENTER);
 
         JPanel center = new JPanel(new BorderLayout(8, 12));
@@ -71,7 +71,7 @@ public class HomeView extends JFrame {
         center.add(menuHolder, BorderLayout.CENTER);
         background.add(center, BorderLayout.CENTER);
 
-        MinecraftLabel footer = new MinecraftLabel("MC://server.wordy.game  v1.0", MinecraftFonts.SMALL, MinecraftColors.TEXT_GRAY);
+        StyledLabel footer = new StyledLabel("MC://server.wordy.game  v1.0", UiFonts.SMALL, UiColors.TEXT_GRAY);
         footer.setHorizontalAlignment(SwingConstants.CENTER);
         background.add(footer, BorderLayout.SOUTH);
 

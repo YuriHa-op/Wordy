@@ -1,7 +1,7 @@
 package client.ui.components;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
+import client.ui.UiColors;
+import client.ui.UiFonts;
 
 import javax.swing.JButton;
 import java.awt.Color;
@@ -13,14 +13,14 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class MinecraftButton extends JButton {
+public class StyledButton extends JButton {
     private boolean hovered;
     private boolean pressed;
 
-    public MinecraftButton(String text) {
+    public StyledButton(String text) {
         super(text);
-        setFont(MinecraftFonts.REGULAR);
-        setForeground(MinecraftColors.TEXT_WHITE);
+        setFont(UiFonts.REGULAR);
+        setForeground(UiColors.TEXT_WHITE);
         setContentAreaFilled(false);
         setFocusPainted(false);
         setBorderPainted(false);
@@ -61,7 +61,7 @@ public class MinecraftButton extends JButton {
         int w = getWidth();
         int h = getHeight();
 
-        Color base = hovered ? MinecraftColors.BUTTON_HOVER : MinecraftColors.BUTTON_GRAY;
+        Color base = hovered ? UiColors.BUTTON_HOVER : UiColors.BUTTON_GRAY;
         if (pressed) {
             base = base.darker();
         }
@@ -89,9 +89,9 @@ public class MinecraftButton extends JButton {
         int tx = (w - fm.stringWidth(getText())) / 2;
         int ty = (h + fm.getAscent()) / 2 - 2;
         g2.setFont(getFont());
-        g2.setColor(MinecraftColors.TEXT_SHADOW);
+        g2.setColor(UiColors.TEXT_SHADOW);
         g2.drawString(getText(), tx + 2, ty + 2);
-        g2.setColor(hovered ? MinecraftColors.TEXT_YELLOW : MinecraftColors.TEXT_WHITE);
+        g2.setColor(hovered ? UiColors.TEXT_YELLOW : UiColors.TEXT_WHITE);
         g2.drawString(getText(), tx, ty);
 
         g2.dispose();

@@ -1,7 +1,7 @@
 package client.ui.components;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
+import client.ui.UiColors;
+import client.ui.UiFonts;
 
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -9,15 +9,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class MinecraftTextField extends JTextField {
-    public MinecraftTextField(int columns) {
+public class StyledTextField extends JTextField {
+    public StyledTextField(int columns) {
         super(columns);
-        setFont(MinecraftFonts.REGULAR);
-        setForeground(MinecraftColors.TEXT_WHITE);
+        setFont(UiFonts.REGULAR);
+        setForeground(UiColors.TEXT_WHITE);
         setBackground(new Color(20, 20, 20));
-        setCaretColor(MinecraftColors.TEXT_WHITE);
+        setCaretColor(UiColors.TEXT_WHITE);
         setSelectionColor(new Color(80, 80, 120));
-        setSelectedTextColor(MinecraftColors.TEXT_WHITE);
+        setSelectedTextColor(UiColors.TEXT_WHITE);
         setBorder(new EmptyBorder(8, 10, 8, 10));
         setOpaque(false);
     }

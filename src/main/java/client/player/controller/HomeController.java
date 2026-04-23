@@ -2,7 +2,7 @@ package client.player.controller;
 
 import client.player.model.PlayerGrpcClient;
 import client.player.view.HomeView;
-import client.ui.util.MinecraftDialog;
+import client.ui.util.StyledDialog;
 
 public class HomeController {
 
@@ -34,7 +34,7 @@ public class HomeController {
             try {
                 client.logout();
             } catch (Exception ex) {
-                MinecraftDialog.showMessage(view, "Logout Error", ex.getMessage());
+                StyledDialog.showMessage(view, "Logout Error", ex.getMessage());
             } finally {
                 client.shutdown();
                 view.dispose();

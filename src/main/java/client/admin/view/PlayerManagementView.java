@@ -1,10 +1,10 @@
 package client.admin.view;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
-import client.ui.components.MinecraftButton;
-import client.ui.components.MinecraftLabel;
-import client.ui.components.MinecraftTextField;
+import client.ui.UiColors;
+import client.ui.UiFonts;
+import client.ui.components.StyledButton;
+import client.ui.components.StyledLabel;
+import client.ui.components.StyledTextField;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -19,18 +19,18 @@ import java.awt.GridLayout;
 
 public class PlayerManagementView extends JPanel {
 
-    private final JTextField idField = new MinecraftTextField(6);
-    private final JTextField usernameField = new MinecraftTextField(10);
-    private final JTextField passwordField = new MinecraftTextField(10);
-    private final JTextField roleField = new MinecraftTextField(8);
-    private final JTextField winsField = new MinecraftTextField(6);
-    private final JTextField searchField = new MinecraftTextField(10);
+    private final JTextField idField = new StyledTextField(6);
+    private final JTextField usernameField = new StyledTextField(10);
+    private final JTextField passwordField = new StyledTextField(10);
+    private final JTextField roleField = new StyledTextField(8);
+    private final JTextField winsField = new StyledTextField(6);
+    private final JTextField searchField = new StyledTextField(10);
 
-    private final JButton addButton = new MinecraftButton("CREATE");
-    private final JButton readButton = new MinecraftButton("READ");
-    private final JButton updateButton = new MinecraftButton("EDIT");
-    private final JButton deleteButton = new MinecraftButton("DELETE");
-    private final JButton searchButton = new MinecraftButton("SEARCH");
+    private final JButton addButton = new StyledButton("CREATE");
+    private final JButton readButton = new StyledButton("READ");
+    private final JButton updateButton = new StyledButton("EDIT");
+    private final JButton deleteButton = new StyledButton("DELETE");
+    private final JButton searchButton = new StyledButton("SEARCH");
 
     private final JTextArea outputArea = new JTextArea(14, 45);
 
@@ -46,17 +46,17 @@ public class PlayerManagementView extends JPanel {
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)
         ));
 
-        form.add(new MinecraftLabel("User ID", MinecraftFonts.SMALL, MinecraftColors.TEXT_WHITE));
+        form.add(new StyledLabel("User ID", UiFonts.SMALL, UiColors.TEXT_WHITE));
         form.add(idField);
-        form.add(new MinecraftLabel("Username", MinecraftFonts.SMALL, MinecraftColors.TEXT_WHITE));
+        form.add(new StyledLabel("Username", UiFonts.SMALL, UiColors.TEXT_WHITE));
         form.add(usernameField);
-        form.add(new MinecraftLabel("Password", MinecraftFonts.SMALL, MinecraftColors.TEXT_WHITE));
+        form.add(new StyledLabel("Password", UiFonts.SMALL, UiColors.TEXT_WHITE));
         form.add(passwordField);
-        form.add(new MinecraftLabel("Role", MinecraftFonts.SMALL, MinecraftColors.TEXT_WHITE));
+        form.add(new StyledLabel("Role", UiFonts.SMALL, UiColors.TEXT_WHITE));
         form.add(roleField);
-        form.add(new MinecraftLabel("Wins", MinecraftFonts.SMALL, MinecraftColors.TEXT_WHITE));
+        form.add(new StyledLabel("Wins", UiFonts.SMALL, UiColors.TEXT_WHITE));
         form.add(winsField);
-        form.add(new MinecraftLabel("Search Keyword", MinecraftFonts.SMALL, MinecraftColors.TEXT_WHITE));
+        form.add(new StyledLabel("Search Keyword", UiFonts.SMALL, UiColors.TEXT_WHITE));
         form.add(searchField);
         form.add(searchButton);
         form.add(new JLabel(""));
@@ -69,11 +69,11 @@ public class PlayerManagementView extends JPanel {
         buttons.add(deleteButton);
 
         outputArea.setEditable(false);
-        outputArea.setFont(MinecraftFonts.SMALL);
-        outputArea.setForeground(MinecraftColors.TEXT_WHITE);
+        outputArea.setFont(UiFonts.SMALL);
+        outputArea.setForeground(UiColors.TEXT_WHITE);
         outputArea.setBackground(new Color(20, 20, 20));
         outputArea.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
-        outputArea.setCaretColor(MinecraftColors.TEXT_WHITE);
+        outputArea.setCaretColor(UiColors.TEXT_WHITE);
 
         JScrollPane outputScroll = new JScrollPane(outputArea);
         outputScroll.getViewport().setOpaque(true);

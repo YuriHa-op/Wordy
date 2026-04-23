@@ -1,7 +1,7 @@
 package client.ui.components;
 
-import client.ui.MinecraftColors;
-import client.ui.MinecraftFonts;
+import client.ui.UiColors;
+import client.ui.UiFonts;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,8 +19,8 @@ public class ChatBox extends JPanel {
         textArea.setEditable(false);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        textArea.setFont(MinecraftFonts.SMALL);
-        textArea.setForeground(MinecraftColors.TEXT_WHITE);
+        textArea.setFont(UiFonts.SMALL);
+        textArea.setForeground(UiColors.TEXT_WHITE);
         textArea.setBackground(new Color(20, 20, 20));
 
         JScrollPane scrollPane = new JScrollPane(textArea);

@@ -7,15 +7,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-public class MinecraftPanel extends JPanel {
+public class StyledPanel extends JPanel {
     private final BufferedImage texture;
     private final int overlayAlpha;
 
-    public MinecraftPanel(String texturePath) {
+    public StyledPanel(String texturePath) {
         this(texturePath, 90);
     }
 
-    public MinecraftPanel(String texturePath, int overlayAlpha) {
+    public StyledPanel(String texturePath, int overlayAlpha) {
         this.texture = TextureLoader.load(texturePath);
         this.overlayAlpha = Math.max(0, Math.min(255, overlayAlpha));
         setOpaque(true);

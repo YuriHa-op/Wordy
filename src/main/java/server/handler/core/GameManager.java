@@ -23,6 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class GameManager {
 
     private static final int GAME_OVER_RETENTION_SECONDS = 8;
+    private static final int DEBUG_WORD_LIMIT = 30;
 
     public static class JoinResult {
         public final String status;
@@ -163,7 +164,31 @@ public class GameManager {
     private void startRound(GameSession session, int roundNumber) {
         int duration = configDAO.getConfigValue("round_duration", 30);
         session.startRound(generateLetters(), duration, roundNumber);
+        logCurrentRoundWordsForActiveGames();
         scheduler.schedule(() -> resolveRound(session.getGameId(), roundNumber), duration, TimeUnit.SECONDS);
+    }
+
+    private void logCurrentRoundWordsForActiveGames() {
+        for (GameSession activeSession : activeGames.values()) {
+            if (!GameSession.ROUND_ACTIVE.equals(activeSession.getState()) || activeSession.getCurrentRound() == null) {
+                continue;
+            }
+
+            List<String> playerNames = new ArrayList<>();
+            for (PlayerState playerState : activeSession.getPlayersSnapshot()) {
+                playerNames.add(playerState.getUsername());
+            }
+
+            List<String> allWords = WordValidator.findSubmittableWords(activeSession.getCurrentRound().getLetters(), 5);
+            int visibleCount = Math.min(DEBUG_WORD_LIMIT, allWords.size());
+            List<String> visibleWords = allWords.subList(0, visibleCount);
+            int hiddenCount = allWords.size() - visibleCount;
+
+            String playersLabel = "[" + String.join(" vs ", playerNames) + "]";
+            String moreSuffix = hiddenCount > 0 ? " (+" + hiddenCount + " more)" : "";
+            System.out.println("[Round " + activeSession.getCurrentRound().getRoundNumber() + "] "
+                    + playersLabel + ": " + visibleWords + moreSuffix);
+        }
     }
 
     private void resolveRound(int gameId, int roundNumber) {

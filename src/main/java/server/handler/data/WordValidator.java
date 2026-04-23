@@ -76,6 +76,12 @@ public class WordValidator {
         Collections.sort(matches);
         return matches;
     }
+
+    public static List<String> getDictionaryWords() {
+        List<String> words = new ArrayList<>(DICTIONARY);
+        Collections.sort(words);
+        return Collections.unmodifiableList(words);
+    }
 }
 
 

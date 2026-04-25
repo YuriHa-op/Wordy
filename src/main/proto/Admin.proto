@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+import "Common.proto";
+
+option java_multiple_files = true;
+
+
+package //?hello;
+
+//admin service crud
+    service AdminService {
+    rpc AdminLogin(wordy.common.LoginRequest) returns (wordy.common.LoginResponse);
+    rpc CreatePlayer(CreatePlayerRequest) returns (CreatePlayerResponse);
+    rpc ReadPlayer(ReadPlayerRequest) returns (ReadPlayerResponse);
+    rpc UpdatePlayer(UpdatePlayerRequest) returns (UpdatePlayerResponse);
+    rpc DeletePlayer(DeletePlayerRequest) returns (DeletePlayerResponse);
+    rpc SearchPlayer(SearchPlayerRequest) returns (SearchPlayerResponse);
+    rpc GetConfig(GetConfigRequest) returns (GetConfigResponse);
+    rpc UpdateConfig(UpdateConfigRequest) returns (UpdateConfigResponse);
+    }
+
+//crud messages
+message CreatePlayerRequest {
+  //session token?
+  string username = 1;
+  string password = 2;
+  string role = 3;
+}
+
+message CreatePlayerResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ReadPlayerRequest {
+  int32 user_id = 1;
+}
+
+message ReadPlayerResponse {//
+  bool success = 1;
+  string message = 2;
+  //id
+  //username
+  //role?
+  //total wins
+}
+
+message UpdatePlayerRequest {
+ //user id
+  // name
+  //role
+  //total wins
+}
+
+message UpdatePlayerResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message DeletePlayerRequest {//
+  int32 user_id = 1;
+}
+
+message DeletePlayerResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message SearchPlayerRequest {//
+  string keyword = 1;
+}
+
+message SearchPlayerResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+////config messages
+//message GetConfigRequest {
+//  //?
+//}
+//
+//message ConfigItem {//see value?
+//  string key = 1;
+//  int32 value = 2;
+//}
+//
+//message GetConfigResponse {
+//  bool success = 1;
+//  string message = 2;
+//}
+//
+//message UpdateConfigRequest {
+//  string key = 2;
+//  int32 value = 3;
+//}
+//
+//message UpdateConfigResponse {
+//  bool success = 1;
+//  string message = 2;
+//}

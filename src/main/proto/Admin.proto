@@ -5,11 +5,11 @@ import "Common.proto";
 option java_multiple_files = true;
 
 
-package //?hello;
+package wordy;
 
 //admin service crud
     service AdminService {
-    rpc AdminLogin(wordy.common.LoginRequest) returns (wordy.common.LoginResponse);
+    rpc AdminLogin(wordy.LoginRequest) returns (wordy.LoginResponse);
     rpc CreatePlayer(CreatePlayerRequest) returns (CreatePlayerResponse);
     rpc ReadPlayer(ReadPlayerRequest) returns (ReadPlayerResponse);
     rpc UpdatePlayer(UpdatePlayerRequest) returns (UpdatePlayerResponse);

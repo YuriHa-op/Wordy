@@ -4,10 +4,12 @@ import "Common.proto";
 
 option java_multiple_files = true;
 
+package wordy;
+
 //player serve
 service PlayerService {
-  rpc Login(wordy.common.LoginRequest) returns (wordy.common.LoginResponse);
-  rpc Logout(wordy.common.LogoutRequest) returns (wordy.common.LogoutResponse);
+  rpc Login(wordy.LoginRequest) returns (wordy.LoginResponse);
+  rpc Logout(wordy.LogoutRequest) returns (wordy.LogoutResponse);
   rpc JoinGame(JoinGameRequest) returns (JoinGameResponse);
   rpc PollGameState(GameStateRequest) returns (GameStateResponse);
   rpc SubmitWord(SubmitWordRequest) returns (SubmitWordResponse);

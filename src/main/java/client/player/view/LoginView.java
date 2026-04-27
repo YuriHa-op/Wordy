@@ -3,10 +3,7 @@ package client.player.view;
 import client.ui.UiColors;
 import client.ui.UiFonts;
 import client.ui.components.StyledButton;
-import client.ui.components.StyledLabel;
-import client.ui.components.StyledPasswordField;
 import client.ui.components.StyledPanel;
-import client.ui.components.StyledTextField;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -17,6 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -24,8 +22,8 @@ import java.awt.Insets;
 
 public class LoginView extends JFrame {
 
-    private final JTextField usernameField = new StyledTextField(20);
-    private final JPasswordField passwordField = new StyledPasswordField(20);
+    private final JTextField usernameField = new JTextField(20);
+    private final JPasswordField passwordField = new JPasswordField(20);
     private final JButton loginButton = new StyledButton("LOGIN");
     private final JLabel messageLabel = new JLabel(" ");
 
@@ -35,12 +33,12 @@ public class LoginView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        StyledPanel background = new StyledPanel("/textures/dirt.png", 80);
+        StyledPanel background = new StyledPanel("/textures/client_login_background.png", 50);
         background.setLayout(new GridBagLayout());
 
         JPanel card = new JPanel(new GridBagLayout());
         card.setOpaque(true);
-        card.setBackground(new Color(0, 0, 0, 125));
+        card.setBackground(new Color(0, 0, 0));
         card.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.BLACK, 3),
                 BorderFactory.createEmptyBorder(20, 24, 20, 24)
@@ -52,8 +50,12 @@ public class LoginView extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1;
 
-        StyledLabel title = new StyledLabel("WORDY", UiFonts.TITLE, UiColors.TEXT_YELLOW);
-        title.setHorizontalAlignment(SwingConstants.CENTER);
+        usernameField.setFont(UiFonts.REGULAR);
+        passwordField.setFont(UiFonts.REGULAR);
+
+        JLabel title = new JLabel("WORDY", SwingConstants.CENTER);
+        title.setFont(UiFonts.TITLE);
+        title.setForeground(UiColors.TEXT_YELLOW);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
@@ -61,25 +63,37 @@ public class LoginView extends JFrame {
 
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        card.add(new StyledLabel("Username", UiFonts.REGULAR, UiColors.TEXT_WHITE), gbc);
+        JLabel usernameLabel = new JLabel("Username");
+        usernameLabel.setFont(UiFonts.REGULAR);
+        usernameLabel.setForeground(UiColors.TEXT_WHITE);
+        card.add(usernameLabel, gbc);
         gbc.gridx = 1;
         card.add(usernameField, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
-        card.add(new StyledLabel("Password", UiFonts.REGULAR, UiColors.TEXT_WHITE), gbc);
+        JLabel passwordLabel = new JLabel("Password");
+        passwordLabel.setFont(UiFonts.REGULAR);
+        passwordLabel.setForeground(UiColors.TEXT_WHITE);
+        card.add(passwordLabel, gbc);
         gbc.gridx = 1;
         card.add(passwordField, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.CENTER;
+        loginButton.setPreferredSize(new Dimension(230, 58));
+        loginButton.setCursor(Cursor.getDefaultCursor());
+        loginButton.setRolloverEnabled(false);
         card.add(loginButton, gbc);
 
         messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         messageLabel.setFont(UiFonts.SMALL);
         messageLabel.setForeground(UiColors.TEXT_RED);
         gbc.gridy = 4;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         card.add(messageLabel, gbc);
 
         background.add(card);

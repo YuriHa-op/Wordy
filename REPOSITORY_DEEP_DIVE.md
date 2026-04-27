@@ -27,7 +27,7 @@ The codebase is practical and deliverable for small-group gameplay and coursewor
 This assessment covered the repository from multiple angles:
 
 - Build and dependency setup: pom.xml
-- Protocol boundary: src/main/proto/WordyService.proto
+- Protocol boundary: src/main/proto/ (admin.proto, player.proto, common.proto)
 - Server runtime and orchestration:
   - src/main/java/server/GrpcServer.java
   - src/main/java/server/controller/*
@@ -80,7 +80,9 @@ flowchart TD
     B4 --> B46[db]
     B4 --> B47[dto]
 
-    C --> C1[WordyService.proto]
+    C --> C1[admin.proto]
+    C --> C2[player.proto]
+    C --> C3[common.proto]
     D --> D1[db/game.sql]
     D --> D2[words.txt]
     D --> D3[fonts and textures]
@@ -128,7 +130,7 @@ flowchart TD
     end
 
     subgraph Boundary
-        Proto[WordyService.proto]
+        Proto[admin.proto player.proto common.proto]
         gRPC[gRPC stubs and services]
     end
 

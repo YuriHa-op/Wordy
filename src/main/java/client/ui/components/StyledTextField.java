@@ -1,36 +1,27 @@
 package client.ui.components;
 
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
+import javax.swing.JTextField;
+
 import client.ui.UiColors;
 import client.ui.UiFonts;
-
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 public class StyledTextField extends JTextField {
     public StyledTextField(int columns) {
         super(columns);
         setFont(UiFonts.REGULAR);
         setForeground(UiColors.TEXT_WHITE);
-        setBackground(new Color(20, 20, 20));
         setCaretColor(UiColors.TEXT_WHITE);
-        setSelectionColor(new Color(80, 80, 120));
+        setSelectionColor(new Color(80, 80, 120, 180));
         setSelectedTextColor(UiColors.TEXT_WHITE);
-        setBorder(new EmptyBorder(8, 10, 8, 10));
-        setOpaque(false);
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setColor(new Color(20, 20, 20));
-        g2.fillRect(0, 0, getWidth(), getHeight());
-        g2.setColor(Color.WHITE);
-        g2.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
-        g2.dispose();
-        super.paintComponent(g);
+        setOpaque(true);
+        setBackground(new Color(24, 24, 24));
+        setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(175, 175, 175), 1),
+                BorderFactory.createEmptyBorder(6, 10, 6, 10)
+        ));
     }
 }
 

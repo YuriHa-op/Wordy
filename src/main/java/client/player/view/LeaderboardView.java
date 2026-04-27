@@ -10,7 +10,6 @@ import client.ui.components.StyledPanel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import java.awt.BorderLayout;
@@ -31,7 +30,7 @@ public class LeaderboardView extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        StyledPanel root = new StyledPanel("/textures/stone.png", 85);
+        StyledPanel root = new StyledPanel("/textures/clienthome.png", 40);
         root.setLayout(new BorderLayout(10, 10));
         root.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
 

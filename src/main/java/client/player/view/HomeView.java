@@ -1,21 +1,22 @@
 package client.player.view;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import client.ui.UiColors;
 import client.ui.UiFonts;
 import client.ui.components.StyledButton;
 import client.ui.components.StyledLabel;
 import client.ui.components.StyledPanel;
-
-import javax.swing.JButton;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 
 public class HomeView extends JFrame {
 
@@ -31,7 +32,7 @@ public class HomeView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        StyledPanel background = new StyledPanel("/textures/grass.png", 85);
+        StyledPanel background = new StyledPanel("/textures/clienthome.png", 35);
         background.setLayout(new BorderLayout(16, 16));
 
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -48,12 +49,16 @@ public class HomeView extends JFrame {
         JPanel menu = new JPanel();
         menu.setOpaque(false);
         menu.setLayout(new BoxLayout(menu, BoxLayout.Y_AXIS));
-        menu.setPreferredSize(new Dimension(360, 210));
-        menu.setMaximumSize(new Dimension(360, 210));
+        menu.setPreferredSize(new Dimension(360, 300));
+        menu.setMaximumSize(new Dimension(360, 300));
 
-        startGameButton.setMaximumSize(new Dimension(320, 46));
-        leaderboardButton.setMaximumSize(new Dimension(320, 46));
-        logoutButton.setMaximumSize(new Dimension(320, 46));
+        Dimension menuButtonSize = new Dimension(320, 72);
+        startGameButton.setPreferredSize(menuButtonSize);
+        startGameButton.setMaximumSize(menuButtonSize);
+        leaderboardButton.setPreferredSize(menuButtonSize);
+        leaderboardButton.setMaximumSize(menuButtonSize);
+        logoutButton.setPreferredSize(menuButtonSize);
+        logoutButton.setMaximumSize(menuButtonSize);
 
         menu.add(startGameButton);
         menu.add(Box.createVerticalStrut(12));
@@ -71,7 +76,7 @@ public class HomeView extends JFrame {
         center.add(menuHolder, BorderLayout.CENTER);
         background.add(center, BorderLayout.CENTER);
 
-        StyledLabel footer = new StyledLabel("MC://server.wordy.game  v1.0", UiFonts.SMALL, UiColors.TEXT_GRAY);
+        StyledLabel footer = new StyledLabel("hotdogdiggydidog-v1.0", UiFonts.SMALL, UiColors.TEXT_GRAY);
         footer.setHorizontalAlignment(SwingConstants.CENTER);
         background.add(footer, BorderLayout.SOUTH);
 

@@ -1,0 +1,81 @@
+syntax = "proto3";
+package wordy;
+
+import "common.proto";
+
+option java_multiple_files = true;
+option java_package = "com.wordy.grpc";
+option java_outer_classname = "PlayerProto";
+
+message JoinGameRequest {
+  string session_token = 1;
+}
+
+message JoinGameResponse {
+  bool success = 1;
+  string message = 2;
+  string status = 3;      // e.g., "WAITING" or "MATCHED"
+  int32 game_id = 4;
+}
+
+message GameStateRequest {
+  string session_token = 1;
+  int32 game_id = 2;
+}
+
+message GameStateResponse {
+  bool success = 1;
+  string message = 2;
+  string status = 3;            // "WAITING", "ROUND_ACTIVE", "ROUND_OVER", "GAME_OVER"
+  repeated string letters = 4;
+  int32 time_remaining = 5;
+  repeated PlayerScore players = 6;
+  string round_winner = 7;
+  string game_winner = 8;
+  int32 round_number = 9;
+}
+
+message PlayerScore {
+  string username = 1;
+  int32 round_wins = 2;
+  bool submitted_this_round = 3;
+}
+
+message SubmitWordRequest {
+  string session_token = 1;
+  int32 game_id = 2;
+  string word = 3;
+  int32 round_number = 4;
+}
+
+message SubmitWordResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetLeaderboardRequest {}
+
+message GetLeaderboardResponse {
+  repeated LeaderboardPlayer top_players = 1;
+  repeated LeaderboardWord longest_words = 2;
+}
+
+message LeaderboardPlayer {
+  string username = 1;
+  int32 total_wins = 2;
+}
+
+message LeaderboardWord {
+  string username = 1;
+  string word = 2;
+  int32 word_length = 3;
+}
+
+service PlayerService {
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+  rpc JoinGame(JoinGameRequest) returns (JoinGameResponse);
+  rpc PollGameState(GameStateRequest) returns (GameStateResponse);
+  rpc SubmitWord(SubmitWordRequest) returns (SubmitWordResponse);
+  rpc GetLeaderboard(GetLeaderboardRequest) returns (GetLeaderboardResponse);
+}

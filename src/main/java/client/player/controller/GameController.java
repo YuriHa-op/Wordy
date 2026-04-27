@@ -6,7 +6,7 @@ import com.wordy.grpc.GameStateResponse;
 import com.wordy.grpc.JoinGameResponse;
 import com.wordy.grpc.PlayerScore;
 import com.wordy.grpc.SubmitWordResponse;
-import client.ui.util.StyledDialog;
+import client.ui.components.PopNotification;
 
 import javax.swing.Timer;
 import java.awt.Color;
@@ -72,7 +72,7 @@ public class GameController {
             }
             if ("NO_MATCH".equals(state.getStatus()) && !noMatchPopupShown) {
                 noMatchPopupShown = true;
-                view.showNoMatchFoundPopup();
+                PopNotification.showNoMatchFound(view);
                 backHome();
                 return;
             }
@@ -144,18 +144,18 @@ public class GameController {
             view.appendLog(">> Round winner: " + state.getRoundWinner());
         }
 
-        if ("WAITING".equals(state.getStatus()) && gameId <= 0 && seconds <= 0 && !noMatchPopupShown) {
-            noMatchPopupShown = true;
-            view.showNoMatchFoundPopup();
-            backHome();
-            return;
-        }
+            if ("WAITING".equals(state.getStatus()) && gameId <= 0 && seconds <= 0 && !noMatchPopupShown) {
+                noMatchPopupShown = true;
+                PopNotification.showNoMatchFound(view);
+                backHome();
+                return;
+            }
 
         if ("GAME_OVER".equals(state.getStatus())) {
             view.appendLog(">> Game ended. Winner: " + state.getGameWinner());
             if (!gameOverShown) {
                 gameOverShown = true;
-                view.showGameOverPopup(client.getCurrentUsername(), state.getGameWinner());
+                PopNotification.showGameOver(view, client.getCurrentUsername(), state.getGameWinner());
                 backHome();
                 return;
             }
@@ -227,7 +227,7 @@ public class GameController {
         sessionInvalidHandled = true;
         stopPolling();
         client.clearLocalSession();
-        StyledDialog.showMessage(view, "Session Ended", "This account was logged in from another client.");
+        PopNotification.showSessionEnded(view, "This account was logged in from another client.");
         view.dispose();
         new LoginController().show();
     }

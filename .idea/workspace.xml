@@ -4,13 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32f5cb93-4d05-4144-98a4-e72191b7273b" name="Changes" comment="">
+    <list default="true" id="32f5cb93-4d05-4144-98a4-e72191b7273b" name="Changes" comment="ui images">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/game.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/player/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/REPOSITORY_DEEP_DIVE.md" beforeDir="false" afterPath="$PROJECT_DIR$/REPOSITORY_DEEP_DIVE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/admin/controller/AdminLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/admin/controller/AdminLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/admin/view/AdminDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/admin/view/AdminDashboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/admin/view/AdminLoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/admin/view/AdminLoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/admin/view/PlayerManagementView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/admin/view/PlayerManagementView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/player/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/player/view/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/player/view/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/handler/core/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/handler/core/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/view/HomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/player/view/HomeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/view/LeaderboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/player/view/LeaderboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/player/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/player/view/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/components/HealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/HealthBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/components/InventorySlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/InventorySlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/components/LetterTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/LetterTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/components/StyledButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/StyledButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/components/StyledLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/StyledLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/components/StyledPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/StyledPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/components/StyledPasswordField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/StyledPasswordField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/components/StyledTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/components/StyledTextField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/util/StyledDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/util/StyledDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/util/TextureLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/util/TextureLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/db/game.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/WordyService.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/button_hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/buttons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/cobblestone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/dirt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/grass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/icons/book.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/icons/chest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/icons/crown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/icons/player_head.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/icons/sword.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/planks.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/stone.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +51,7 @@
   </component>
   <component name="CopilotPersistence">
     <persistenceIdMap>
+      <entry key="_C:/Users/hawci/Desktop/9331-team4_finproject" value="3ClxBxpQ19wPtfEgELPV2GlXoWc" />
       <entry key="_C:/Users/hawci/IdeaProjects/9331-team4_finproject" value="3CWdjkZchi6Jg6wCXXegN2zeVMe" />
     </persistenceIdMap>
   </component>
@@ -47,22 +80,22 @@
     &quot;assignee&quot;: &quot;YuriHa-op&quot;
   }
 }</component>
-  <component name="GitLabMergeRequestFiltersHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPENED",
-    "assignee": {
-      "type": "org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue",
-      "username": "HartCrane",
-      "fullname": "Hart Crane"
+  <component name="GitLabMergeRequestFiltersHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPENED&quot;,
+    &quot;assignee&quot;: {
+      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,
+      &quot;username&quot;: &quot;HartCrane&quot;,
+      &quot;fullname&quot;: &quot;Hart Crane&quot;
     }
   }
-}]]></component>
-  <component name="GitLabMergeRequestsSettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "first": "https://gitlab.com/slu2/faculty/rbmakil/2025-2026/term2/9331/9331_g4/9331-team4_finproject.git",
-    "second": "2ea5915c-1b98-45e8-8e39-57239c80046d"
+}</component>
+  <component name="GitLabMergeRequestsSettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;first&quot;: &quot;https://gitlab.com/slu2/faculty/rbmakil/2025-2026/term2/9331/9331_g4/9331-team4_finproject.git&quot;,
+    &quot;second&quot;: &quot;2ea5915c-1b98-45e8-8e39-57239c80046d&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/YuriHa-op/Wordy.git&quot;,
@@ -89,6 +122,7 @@
     &quot;Application.AdminApp.executor&quot;: &quot;Run&quot;,
     &quot;Application.GrpcServer.executor&quot;: &quot;Run&quot;,
     &quot;Application.PlayerApp.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SessionManagerTest.createSessionInvalidatesPreviousSessionForSameUser.executor&quot;: &quot;Run&quot;,
     &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
@@ -100,8 +134,10 @@
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/hawci/Desktop/9331-team4_finproject&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -117,6 +153,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hawci\IdeaProjects\9331-team4_finproject\src\main\resources\db" />
       <recent name="C:\Users\hawci\IdeaProjects\9331-team4_finproject\src\main\resources" />
     </key>
   </component>
@@ -160,16 +197,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SessionManagerTest.createSessionInvalidatesPreviousSessionForSameUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="9331-team4_finproject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.handler.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="server.handler.core" />
+      <option name="MAIN_CLASS_NAME" value="server.handler.core.SessionManagerTest" />
+      <option name="METHOD_NAME" value="createSessionInvalidatesPreviousSessionForSameUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.AdminApp" />
       <item itemvalue="Application.GrpcServer" />
       <item itemvalue="Application.PlayerApp" />
+      <item itemvalue="JUnit.SessionManagerTest.createSessionInvalidatesPreviousSessionForSameUser" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AdminApp" />
-        <item itemvalue="Application.PlayerApp" />
         <item itemvalue="Application.GrpcServer" />
+        <item itemvalue="Application.PlayerApp" />
+        <item itemvalue="JUnit.SessionManagerTest.createSessionInvalidatesPreviousSessionForSameUser" />
       </list>
     </recent_temporary>
   </component>
@@ -183,11 +238,35 @@
       <workItem from="1776505398957" duration="2776000" />
       <workItem from="1776522421596" duration="18458000" />
       <workItem from="1776542472630" duration="296000" />
+      <workItem from="1776607146078" duration="2015000" />
+      <workItem from="1776811020420" duration="414000" />
+      <workItem from="1776811875274" duration="2000" />
+      <workItem from="1776951752581" duration="369000" />
+      <workItem from="1776973826789" duration="356000" />
+      <workItem from="1776974396733" duration="988000" />
+      <workItem from="1777015347832" duration="1132000" />
+      <workItem from="1777070497322" duration="883000" />
+      <workItem from="1777072753759" duration="4000" />
+      <workItem from="1777080406689" duration="22000" />
+      <workItem from="1777098279604" duration="976000" />
     </task>
+    <task id="LOCAL-00001" summary="ui images">
+      <option name="closed" value="true" />
+      <created>1776974069470</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1776974069470</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ui images" />
+    <option name="LAST_COMMIT_MESSAGE" value="ui images" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

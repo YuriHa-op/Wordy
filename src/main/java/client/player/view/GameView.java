@@ -12,7 +12,6 @@ import client.ui.components.StyledTextField;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -70,7 +69,7 @@ public class GameView extends JFrame {
         scoreArea.setBackground(new Color(20, 20, 20));
         scoreArea.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
 
-        StyledPanel root = new StyledPanel("/textures/cobblestone.png", 80);
+        StyledPanel root = new StyledPanel("/textures/gamesession_background.png", 50);
         root.setLayout(new BorderLayout(10, 10));
         root.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
 
@@ -78,26 +77,25 @@ public class GameView extends JFrame {
         top.setOpaque(false);
         top.add(statusLabel);
         top.add(roundLabel);
-        JPanel timerAndName = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 2));
+        JPanel timerAndName = new JPanel(new BorderLayout(8, 0));
         timerAndName.setOpaque(false);
-        timerAndName.add(timerLabel);
-        timerAndName.add(playerNameLabel);
+        timerAndName.add(timerLabel, BorderLayout.WEST);
+        timerAndName.add(playerNameLabel, BorderLayout.CENTER);
         top.add(timerAndName);
 
         JPanel heartInfo = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 2));
         heartInfo.setOpaque(false);
         playerNameLabel.setFont(UiFonts.SMALL);
         playerNameLabel.setForeground(UiColors.TEXT_GREEN);
-        playerNameLabel.setPreferredSize(new Dimension(180, 30));
         heartInfo.add(healthBar);
         top.add(heartInfo);
         root.add(top, BorderLayout.NORTH);
 
-        JPanel letterGrid = new JPanel(new GridLayout(2, 10, 8, 8));
+        JPanel letterGrid = new JPanel(new GridLayout(2, 10, 2, 2));
         letterGrid.setOpaque(false);
         letterGrid.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.BLACK, 2),
-                BorderFactory.createEmptyBorder(8, 8, 8, 8)
+            BorderFactory.createEmptyBorder(6, 6, 6, 6)
         ));
         for (int i = 0; i < 20; i++) {
             LetterTile tile = new LetterTile();
@@ -271,94 +269,13 @@ public class GameView extends JFrame {
         tile.setSelectedTile(false);
     }
 
-    public void showNoMatchFoundPopup() {
-        JDialog dialog = new JDialog(this, true);
-        dialog.setUndecorated(true);
-        dialog.setSize(480, 220);
-        dialog.setLocationRelativeTo(this);
-
-        JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBackground(new Color(15, 15, 15));
-        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
-
-        JLabel title = new JLabel("NO MATCH FOUND", JLabel.CENTER);
-        title.setFont(UiFonts.LARGE);
-        title.setForeground(new Color(255, 170, 0));
-
-        JLabel details = new JLabel("Matchmaking timer ran out.", JLabel.CENTER);
-        details.setFont(UiFonts.REGULAR);
-        details.setForeground(UiColors.TEXT_WHITE);
-
-        StyledButton ok = new StyledButton("OK");
-        ok.setPreferredSize(new Dimension(160, 42));
-        ok.addActionListener(e -> dialog.dispose());
-
-        JPanel bottom = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        bottom.setOpaque(false);
-        bottom.add(ok);
-
-        panel.add(title, BorderLayout.NORTH);
-        panel.add(details, BorderLayout.CENTER);
-        panel.add(bottom, BorderLayout.SOUTH);
-
-        dialog.setContentPane(panel);
-        dialog.setVisible(true);
-    }
 
     public void setScoreboardHtml(String html) {
         scoreArea.setText(html);
         scoreArea.setCaretPosition(0);
     }
 
-    public void showGameOverPopup(String currentUsername, String winnerName) {
-        boolean isWinner = currentUsername != null && currentUsername.equalsIgnoreCase(winnerName);
-
-        JDialog dialog = new JDialog(this, true);
-        dialog.setUndecorated(true);
-        dialog.setSize(700, 320);
-        dialog.setLocationRelativeTo(this);
-
-        JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBackground(new Color(15, 15, 15));
-        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
-
-        JLabel result = new JLabel(isWinner ? "YOU WIN!" : "YOU LOST!", JLabel.CENTER);
-        result.setFont(UiFonts.TITLE.deriveFont(52f));
-        result.setForeground(isWinner ? new Color(85, 255, 85) : new Color(255, 85, 85));
-
-        JLabel winner = new JLabel("Winner: " + winnerName, JLabel.CENTER);
-        winner.setFont(UiFonts.LARGE);
-        winner.setForeground(new Color(255, 85, 85));
-
-        JPanel centerContent = new JPanel(new BorderLayout(8, 8));
-        centerContent.setOpaque(false);
-        centerContent.add(result, BorderLayout.CENTER);
-        if (!isWinner) {
-            centerContent.add(winner, BorderLayout.SOUTH);
-        }
-
-        panel.add(centerContent, BorderLayout.CENTER);
-
-        JLabel clickHint = new JLabel("Click anywhere to continue", JLabel.CENTER);
-        clickHint.setFont(UiFonts.SMALL);
-        clickHint.setForeground(new Color(170, 170, 170));
-        panel.add(clickHint, BorderLayout.SOUTH);
-
-        MouseAdapter closeOnClick = new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                dialog.dispose();
-            }
-        };
-        panel.addMouseListener(closeOnClick);
-        centerContent.addMouseListener(closeOnClick);
-        result.addMouseListener(closeOnClick);
-        winner.addMouseListener(closeOnClick);
-        clickHint.addMouseListener(closeOnClick);
-
-        dialog.setContentPane(panel);
-        dialog.setVisible(true);
-    }
+    
 
     public JLabel getStatusLabel() { return statusLabel; }
     public JLabel getRoundLabel() { return roundLabel; }

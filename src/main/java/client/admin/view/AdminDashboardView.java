@@ -40,7 +40,7 @@ public class AdminDashboardView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        StyledPanel root = new StyledPanel("/textures/stone.png", 95);
+        StyledPanel root = new StyledPanel("/textures/admin_background.png", 45);
         root.setLayout(new BorderLayout(10, 10));
         root.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
 
@@ -89,10 +89,19 @@ public class AdminDashboardView extends JFrame {
         panel.setOpaque(false);
         configMessageLabel.setFont(UiFonts.SMALL);
         configMessageLabel.setForeground(UiColors.TEXT_AQUA);
+        configMessageLabel.setOpaque(true);
+        configMessageLabel.setBackground(new Color(20, 20, 20));
         panel.add(new StyledLabel("Waiting Time (s)", UiFonts.REGULAR, UiColors.TEXT_WHITE));
         panel.add(waitingTimeField);
         panel.add(new StyledLabel("Round Duration (s)", UiFonts.REGULAR, UiColors.TEXT_WHITE));
         panel.add(roundDurationField);
+        // Ensure these config buttons fully repaint (avoid background artifacts on hover)
+        loadConfigButton.setContentAreaFilled(true);
+        loadConfigButton.setOpaque(true);
+        loadConfigButton.setRolloverEnabled(false);
+        saveConfigButton.setContentAreaFilled(true);
+        saveConfigButton.setOpaque(true);
+        saveConfigButton.setRolloverEnabled(false);
         panel.add(loadConfigButton);
         panel.add(saveConfigButton);
         panel.add(configMessageLabel);

@@ -20,7 +20,7 @@ public final class StyledDialog {
     public static void showMessage(Component parent, String title, String message) {
         JDialog dialog = baseDialog(parent, title);
 
-        StyledPanel panel = new StyledPanel("/textures/stone.png", 70);
+        StyledPanel panel = new StyledPanel("/textures/clienthome.png", 55);
         panel.setLayout(new BorderLayout(10, 10));
 
         StyledLabel label = new StyledLabel(message, UiFonts.REGULAR, UiColors.TEXT_WHITE);
@@ -43,7 +43,7 @@ public final class StyledDialog {
         final boolean[] accepted = {false};
         JDialog dialog = baseDialog(parent, title);
 
-        StyledPanel panel = new StyledPanel("/textures/stone.png", 70);
+        StyledPanel panel = new StyledPanel("/textures/clienthome.png", 55);
         panel.setLayout(new BorderLayout(10, 10));
 
         StyledLabel label = new StyledLabel(message, UiFonts.REGULAR, UiColors.TEXT_WHITE);

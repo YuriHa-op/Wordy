@@ -1,0 +1,26 @@
+syntax = "proto3";
+package wordy;
+
+option java_multiple_files = true;
+option java_package = "com.wordy.grpc";
+option java_outer_classname = "CommonProto";
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  bool success = 1;
+  string message = 2;
+  string session_token = 3;
+}
+
+message LogoutRequest {
+  string session_token = 1;
+}
+
+message LogoutResponse {
+  bool success = 1;
+  string message = 2;
+}

@@ -40,6 +40,7 @@ public class AdminDashboardController {
         GetConfigResponse response = client.getConfig();
         if (!response.getSuccess()) {
             view.getConfigMessageLabel().setText(response.getMessage());
+            view.repaint();
             return;
         }
 
@@ -51,6 +52,7 @@ public class AdminDashboardController {
             }
         }
         view.getConfigMessageLabel().setText("Config loaded");
+        view.repaint();
     }
 
     private void saveConfig() {
@@ -66,8 +68,10 @@ public class AdminDashboardController {
             } else {
                 view.getConfigMessageLabel().setText(r1.getMessage() + " | " + r2.getMessage());
             }
+            view.repaint();
         } catch (Exception e) {
             view.getConfigMessageLabel().setText("Invalid numbers");
+            view.repaint();
         }
     }
 }

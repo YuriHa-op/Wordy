@@ -14,6 +14,7 @@ message LoginResponse {
   bool success = 1;
   string message = 2;
   string session_token = 3;
+  string role = 4;
 }
 
 message LogoutRequest {
@@ -23,4 +24,18 @@ message LogoutRequest {
 message LogoutResponse {
   bool success = 1;
   string message = 2;
+}
+
+message CheckSessionRequest {
+  string session_token = 1;
+}
+
+message CheckSessionResponse {
+  bool is_valid = 1;
+}
+
+service CommonService {
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+  rpc CheckSession(CheckSessionRequest) returns (CheckSessionResponse);
 }

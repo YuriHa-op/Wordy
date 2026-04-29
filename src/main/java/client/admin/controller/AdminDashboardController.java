@@ -2,13 +2,19 @@ package client.admin.controller;
 
 import client.admin.model.AdminGrpcClient;
 import client.admin.view.AdminDashboardView;
+import client.ui.components.PopNotification;
+import client.ui.util.StyledDialog;
 import com.wordy.grpc.ConfigItem;
 import com.wordy.grpc.GetConfigResponse;
+
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 public class AdminDashboardController {
 
     private final AdminDashboardView view;
     private final AdminGrpcClient client;
+    private Timer sessionChecker;
 
     public AdminDashboardController(AdminGrpcClient client) {
         this.client = client;
@@ -17,6 +23,20 @@ public class AdminDashboardController {
         new PlayerManagementController(client, view.getPlayerManagementView());
         bindConfigActions();
         bindClose();
+        startSessionChecker();
+    }
+
+    private void startSessionChecker() {
+        sessionChecker = new Timer(2000, e -> {
+            if (!client.checkSession()) {
+                sessionChecker.stop();
+                PopNotification.showSessionEnded(view, "<html><center>You have been disconnected because someone else<br>logged in with your account.</center></html>");
+                client.shutdown();
+                view.dispose();
+                new client.player.controller.LoginController().show();
+            }
+        });
+        sessionChecker.start();
     }
 
     public void show() {
@@ -30,10 +50,17 @@ public class AdminDashboardController {
 
     private void bindClose() {
         view.getCloseButton().addActionListener(e -> {
+            cleanup();
             client.shutdown();
             view.dispose();
-            new AdminLoginController().show();
+            new client.player.controller.LoginController().show();
         });
+    }
+
+    private void cleanup() {
+        if (sessionChecker != null) {
+            sessionChecker.stop();
+        }
     }
 
     private void loadConfig() {

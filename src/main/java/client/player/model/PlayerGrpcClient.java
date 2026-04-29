@@ -15,6 +15,9 @@ import com.wordy.grpc.SubmitWordRequest;
 import com.wordy.grpc.SubmitWordResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import com.wordy.grpc.CheckSessionRequest;
+import com.wordy.grpc.CheckSessionResponse;
+import com.wordy.grpc.CommonServiceGrpc;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +25,7 @@ public class PlayerGrpcClient {
 
     private final ManagedChannel channel;
     private final PlayerServiceGrpc.PlayerServiceBlockingStub stub;
+    private final CommonServiceGrpc.CommonServiceBlockingStub commonStub;
     private String sessionToken;
     private String currentUsername;
 
@@ -30,10 +34,11 @@ public class PlayerGrpcClient {
                 .usePlaintext()
                 .build();
         this.stub = PlayerServiceGrpc.newBlockingStub(channel);
+        this.commonStub = CommonServiceGrpc.newBlockingStub(channel);
     }
 
     public LoginResponse login(String username, String password) {
-        LoginResponse response = stub.login(LoginRequest.newBuilder()
+        LoginResponse response = commonStub.login(LoginRequest.newBuilder()
                 .setUsername(username)
                 .setPassword(password)
                 .build());
@@ -48,12 +53,24 @@ public class PlayerGrpcClient {
         if (sessionToken == null || sessionToken.isBlank()) {
             return LogoutResponse.newBuilder().setSuccess(true).setMessage("Already logged out").build();
         }
-        LogoutResponse response = stub.logout(LogoutRequest.newBuilder().setSessionToken(sessionToken).build());
+        LogoutResponse response = commonStub.logout(LogoutRequest.newBuilder().setSessionToken(sessionToken).build());
         if (response.getSuccess()) {
             this.sessionToken = null;
             this.currentUsername = null;
         }
         return response;
+    }
+
+    public boolean checkSession() {
+        if (sessionToken == null || sessionToken.isBlank()) return false;
+        try {
+            CheckSessionResponse response = commonStub.checkSession(
+                    CheckSessionRequest.newBuilder().setSessionToken(sessionToken).build()
+            );
+            return response.getIsValid();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public JoinGameResponse joinGame() {

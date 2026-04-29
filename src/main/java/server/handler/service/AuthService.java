@@ -10,11 +10,13 @@ public class AuthService {
         public final boolean success;
         public final String message;
         public final String token;
+        public final String role;
 
-        public AuthResult(boolean success, String message, String token) {
+        public AuthResult(boolean success, String message, String token, String role) {
             this.success = success;
             this.message = message;
             this.token = token;
+            this.role = role;
         }
     }
 
@@ -30,10 +32,10 @@ public class AuthService {
         try {
             UserDTO user = userDAO.findByUsername(username);
             if (user == null || !user.getPassword().equals(password)) {
-                return new AuthResult(false, "Invalid username or password", "");
+                return new AuthResult(false, "Invalid username or password", "", "");
             }
             if (adminOnly && !"ADMIN".equals(user.getRole())) {
-                return new AuthResult(false, "Admin role required", "");
+                return new AuthResult(false, "Admin role required", "", user.getRole());
             }
 
             String oldToken = sessionManager.getTokenByUsername(username);
@@ -45,15 +47,22 @@ public class AuthService {
             String message = oldToken == null
                     ? "Login successful"
                     : "Login successful. Previous session disconnected.";
-            return new AuthResult(true, message, token);
+            return new AuthResult(true, message, token, user.getRole());
         } catch (Exception e) {
-            return new AuthResult(false, "Login error: " + e.getMessage(), "");
+            String error = e.getMessage();
+            if (error != null && error.contains("Communications link failure")) {
+                return new AuthResult(false, "Database connection failed, server is offline.", "", "");
+            }
+            if (error != null && error.length() > 40) {
+                error = error.substring(0, 37) + "...";
+            }
+            return new AuthResult(false, "Login error: " + error, "", "");
         }
     }
 
     public AuthResult logout(String token) {
         if (!sessionManager.isValid(token)) {
-            return new AuthResult(false, "Invalid session", "");
+            return new AuthResult(false, "Invalid session", "", "");
         }
         String username = sessionManager.getUsername(token);
         sessionManager.invalidateSession(token);
@@ -62,7 +71,7 @@ public class AuthService {
         } catch (Exception ignored) {
             // Session is still invalidated even if DB update fails.
         }
-        return new AuthResult(true, "Logout successful", "");
+        return new AuthResult(true, "Logout successful", "", "");
     }
 
     public boolean isValidSession(String token) {

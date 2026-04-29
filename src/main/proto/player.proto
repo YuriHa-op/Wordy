@@ -72,8 +72,6 @@ message LeaderboardWord {
 }
 
 service PlayerService {
-  rpc Login(LoginRequest) returns (LoginResponse);
-  rpc Logout(LogoutRequest) returns (LogoutResponse);
   rpc JoinGame(JoinGameRequest) returns (JoinGameResponse);
   rpc PollGameState(GameStateRequest) returns (GameStateResponse);
   rpc SubmitWord(SubmitWordRequest) returns (SubmitWordResponse);

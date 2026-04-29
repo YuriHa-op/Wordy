@@ -1,5 +1,8 @@
 package server.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import com.wordy.grpc.AdminServiceGrpc;
 import com.wordy.grpc.ConfigItem;
 import com.wordy.grpc.CreatePlayerRequest;
@@ -8,8 +11,6 @@ import com.wordy.grpc.DeletePlayerRequest;
 import com.wordy.grpc.DeletePlayerResponse;
 import com.wordy.grpc.GetConfigRequest;
 import com.wordy.grpc.GetConfigResponse;
-import com.wordy.grpc.LoginRequest;
-import com.wordy.grpc.LoginResponse;
 import com.wordy.grpc.ReadPlayerRequest;
 import com.wordy.grpc.ReadPlayerResponse;
 import com.wordy.grpc.SearchPlayerRequest;
@@ -18,14 +19,12 @@ import com.wordy.grpc.UpdateConfigRequest;
 import com.wordy.grpc.UpdateConfigResponse;
 import com.wordy.grpc.UpdatePlayerRequest;
 import com.wordy.grpc.UpdatePlayerResponse;
+
 import io.grpc.stub.StreamObserver;
 import server.db.ConfigDAO;
 import server.db.UserDAO;
 import server.dto.UserDTO;
 import server.handler.service.AuthService;
-
-import java.util.List;
-import java.util.Map;
 
 public class AdminServiceImpl extends AdminServiceGrpc.AdminServiceImplBase {
 
@@ -37,17 +36,6 @@ public class AdminServiceImpl extends AdminServiceGrpc.AdminServiceImplBase {
         this.authService = authService;
         this.userDAO = userDAO;
         this.configDAO = configDAO;
-    }
-
-    @Override
-    public void adminLogin(LoginRequest request, StreamObserver<LoginResponse> responseObserver) {
-        AuthService.AuthResult result = authService.login(request.getUsername(), request.getPassword(), true);
-        responseObserver.onNext(LoginResponse.newBuilder()
-                .setSuccess(result.success)
-                .setMessage(result.message)
-                .setSessionToken(result.token)
-                .build());
-        responseObserver.onCompleted();
     }
 
     @Override

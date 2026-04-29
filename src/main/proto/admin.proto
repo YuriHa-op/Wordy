@@ -95,7 +95,6 @@ message UpdateConfigResponse {
 }
 
 service AdminService {
-  rpc AdminLogin(LoginRequest) returns (LoginResponse);
   rpc CreatePlayer(CreatePlayerRequest) returns (CreatePlayerResponse);
   rpc ReadPlayer(ReadPlayerRequest) returns (ReadPlayerResponse);
   rpc UpdatePlayer(UpdatePlayerRequest) returns (UpdatePlayerResponse);

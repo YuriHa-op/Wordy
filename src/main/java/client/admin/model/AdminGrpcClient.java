@@ -13,12 +13,15 @@ import com.wordy.grpc.ReadPlayerRequest;
 import com.wordy.grpc.ReadPlayerResponse;
 import com.wordy.grpc.SearchPlayerRequest;
 import com.wordy.grpc.SearchPlayerResponse;
+import com.wordy.grpc.CheckSessionRequest;
+import com.wordy.grpc.CheckSessionResponse;
 import com.wordy.grpc.UpdateConfigRequest;
 import com.wordy.grpc.UpdateConfigResponse;
 import com.wordy.grpc.UpdatePlayerRequest;
 import com.wordy.grpc.UpdatePlayerResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import com.wordy.grpc.CommonServiceGrpc;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,6 +29,7 @@ public class AdminGrpcClient {
 
     private final ManagedChannel channel;
     private final AdminServiceGrpc.AdminServiceBlockingStub stub;
+    private final CommonServiceGrpc.CommonServiceBlockingStub commonStub;
     private String sessionToken;
 
     public AdminGrpcClient(String host, int port) {
@@ -33,10 +37,11 @@ public class AdminGrpcClient {
                 .usePlaintext()
                 .build();
         this.stub = AdminServiceGrpc.newBlockingStub(channel);
+        this.commonStub = CommonServiceGrpc.newBlockingStub(channel);
     }
 
     public LoginResponse login(String username, String password) {
-        LoginResponse response = stub.adminLogin(LoginRequest.newBuilder()
+        LoginResponse response = commonStub.login(LoginRequest.newBuilder()
                 .setUsername(username)
                 .setPassword(password)
                 .build());
@@ -97,6 +102,18 @@ public class AdminGrpcClient {
                 .setKey(key)
                 .setValue(value)
                 .build());
+    }
+
+    public boolean checkSession() {
+        if (sessionToken == null || sessionToken.isBlank()) return false;
+        try {
+            CheckSessionResponse response = commonStub.checkSession(
+                    CheckSessionRequest.newBuilder().setSessionToken(sessionToken).build()
+            );
+            return response.getIsValid();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public void shutdown() {

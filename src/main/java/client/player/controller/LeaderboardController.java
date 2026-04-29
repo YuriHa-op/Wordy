@@ -2,10 +2,14 @@ package client.player.controller;
 
 import client.player.model.PlayerGrpcClient;
 import client.player.view.LeaderboardView;
+import client.ui.components.PopNotification;
+import client.ui.util.StyledDialog;
 import com.wordy.grpc.GetLeaderboardResponse;
 import com.wordy.grpc.LeaderboardPlayer;
 import com.wordy.grpc.LeaderboardWord;
 
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +17,34 @@ public class LeaderboardController {
 
     private final LeaderboardView view;
     private final PlayerGrpcClient client;
+    private Timer sessionChecker;
 
     public LeaderboardController(PlayerGrpcClient client) {
         this.client = client;
         this.view = new LeaderboardView();
         bind();
         loadBoard();
+        startSessionChecker();
+    }
+
+    private void startSessionChecker() {
+        sessionChecker = new Timer(2000, e -> {
+            if (!client.checkSession()) {
+                sessionChecker.stop();
+                PopNotification.showSessionEnded(view, "<html><center>You have been disconnected because someone else<br>logged in with your account.</center></html>");
+                client.shutdown();
+                view.dispose();
+                new LoginController().show();
+            }
+        });
+        sessionChecker.start();
+    }
+
+    private void cleanup() {
+        if (sessionChecker != null) {
+            sessionChecker.stop();
+        }
+        view.dispose();
     }
 
     public void show() {
@@ -27,7 +53,7 @@ public class LeaderboardController {
 
     private void bind() {
         view.getBackButton().addActionListener(e -> {
-            view.dispose();
+            cleanup();
             new HomeController(client).show();
         });
     }

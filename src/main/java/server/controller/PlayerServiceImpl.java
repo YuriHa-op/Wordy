@@ -39,27 +39,6 @@ public class PlayerServiceImpl extends PlayerServiceGrpc.PlayerServiceImplBase {
     }
 
     @Override
-    public void login(LoginRequest request, StreamObserver<LoginResponse> responseObserver) {
-        AuthService.AuthResult result = authService.login(request.getUsername(), request.getPassword(), false);
-        responseObserver.onNext(LoginResponse.newBuilder()
-                .setSuccess(result.success)
-                .setMessage(result.message)
-                .setSessionToken(result.token)
-                .build());
-        responseObserver.onCompleted();
-    }
-
-    @Override
-    public void logout(LogoutRequest request, StreamObserver<LogoutResponse> responseObserver) {
-        AuthService.AuthResult result = authService.logout(request.getSessionToken());
-        responseObserver.onNext(LogoutResponse.newBuilder()
-                .setSuccess(result.success)
-                .setMessage(result.message)
-                .build());
-        responseObserver.onCompleted();
-    }
-
-    @Override
     public void joinGame(JoinGameRequest request, StreamObserver<JoinGameResponse> responseObserver) {
         GameManager.JoinResult result = gameService.joinGame(request.getSessionToken());
         boolean success = !"INVALID_SESSION".equals(result.status);

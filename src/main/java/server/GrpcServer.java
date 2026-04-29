@@ -3,6 +3,7 @@ package server;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import server.controller.AdminServiceImpl;
+import server.controller.CommonServiceImpl;
 import server.controller.PlayerServiceImpl;
 import server.db.ConfigDAO;
 import server.db.LongestWordDAO;
@@ -28,6 +29,7 @@ public class GrpcServer {
         LeaderboardService leaderboardService = new LeaderboardService(userDAO, longestWordDAO);
 
         Server server = ServerBuilder.forPort(6767)
+                .addService(new CommonServiceImpl(authService))
                 .addService(new PlayerServiceImpl(authService, gameService, leaderboardService))
                 .addService(new AdminServiceImpl(authService, userDAO, configDAO))
                 .build()

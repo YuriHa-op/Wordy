@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package wordy;
+
+//Log in messages for both admin/player
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  bool success = 1;
+  string message = 2;
+  //maybe token?
+}
+
+message LogoutRequest {
+}
+
+message LogoutResponse {
+  bool success = 1;
+  string message = 2;
+}

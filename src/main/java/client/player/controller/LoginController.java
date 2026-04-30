@@ -63,14 +63,18 @@ public class LoginController {
                     view.dispose();
                 });
             } else {
-                view.getMessageLabel().setText("<html><div style='text-align: center; width: 350px;'>" + response.getMessage() + "</div></html>");
+                view.getMessageLabel().setText(response.getMessage());
+                view.getMessageLabel().revalidate();
+                view.getMessageLabel().repaint();
             }
         } catch (Exception ex) {
             String errorMsg = ex.getMessage();
             if (errorMsg != null && errorMsg.contains("UNAVAILABLE")) {
                 errorMsg = "Cannot connect to server.";
             }
-            view.getMessageLabel().setText("<html><div style='text-align: center; width: 350px;'>" + errorMsg + "</div></html>");
+            view.getMessageLabel().setText(errorMsg);
+            view.getMessageLabel().revalidate();
+            view.getMessageLabel().repaint();
         } finally {
             if (view.isDisplayable()) {
                 view.getLoginButton().setEnabled(true);
@@ -78,5 +82,3 @@ public class LoginController {
         }
     }
 }
-
-

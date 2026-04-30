@@ -22,6 +22,8 @@ import java.awt.Insets;
 
 public class LoginView extends JFrame {
 
+    private static final Dimension MESSAGE_SIZE = new Dimension(360, 48);
+
     private final JTextField usernameField = new JTextField(20);
     private final JPasswordField passwordField = new JPasswordField(20);
     private final JButton loginButton = new StyledButton("LOGIN");
@@ -90,8 +92,12 @@ public class LoginView extends JFrame {
         card.add(loginButton, gbc);
 
         messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        messageLabel.setVerticalAlignment(SwingConstants.TOP);
         messageLabel.setFont(UiFonts.SMALL);
         messageLabel.setForeground(UiColors.TEXT_RED);
+        messageLabel.setPreferredSize(MESSAGE_SIZE);
+        messageLabel.setMinimumSize(MESSAGE_SIZE);
+        messageLabel.setMaximumSize(MESSAGE_SIZE);
         gbc.gridy = 4;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         card.add(messageLabel, gbc);
@@ -108,4 +114,3 @@ public class LoginView extends JFrame {
     public JButton getLoginButton() { return loginButton; }
     public JLabel getMessageLabel() { return messageLabel; }
 }
-
